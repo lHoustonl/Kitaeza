@@ -1,0 +1,19 @@
+<h2>Autoparts</h2>
+
+{{#if users.length}}
+<ul>
+    {{#each users}}
+    <li>
+        <label>
+            <span>{{login}}</span>
+            <span>{{password}}</span>
+        </label>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<p>
+    No users!
+    <a>Add user</a>
+</p>
+{{/if}}
