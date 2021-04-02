@@ -1,19 +1,22 @@
-<h2>Autoparts</h2>
-
-{{#if users.length}}
-<ul>
-    {{#each users}}
-    <li>
-        <label>
-            <span>{{ login }}</span>
-            <span>{{ password }}</span>
-        </label>
-    </li>
-    {{/each}}
-</ul>
-{{else}}
-<p>
-    No users!
-    <a>Add user</a>
-</p>
-{{/if}}
+<div class="contents1">
+    <div class="img1">
+        {{#if users.length}}
+        <h1>Пользователи</h1>
+        {{#each users}}
+        <p>{{ login }}</span>
+        <p>{{ password }}</span>
+        {{/each}}
+        {{else}}
+        <h1>Пользователи отсутствуют</h1>
+        <p>Add user</p>
+        {{/if}}      
+    </div>
+</div>
+<div class="trending">
+    <h3>Trending Now</h3>
+    <div class="trending-items-list"></div>
+</div>
+<div class="gear">
+    <h3>Running Gear</h3>
+    <div class="gear-items-list"></div>
+</div>

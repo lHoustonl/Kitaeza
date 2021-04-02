@@ -1,7 +1,7 @@
-<form action="/registration" method="POST">
+{{!-- <form action="/registration" method="POST">
 <h2>Register</h2>
 
-<div>
+<div class="auth">
     <label>User login</label>
     <input type="text" name="login">
 
@@ -9,4 +9,19 @@
     <input type="password" name="password">
 </div>
 <button type="submit">Register</button>
-</form>
+</form> --}}
+</div> <!-- I cannot explain why this closing div is here but it's important -->
+    <div class="login text-center pt-3">
+        <img src="/logo2.png" alt="" class="logo">
+        <h2>Зарегистриуйтесь сейчас</h2>
+        <form action="/registration" method="POST">
+            <input type="email" required="required" name="login" maxlength="60" placeholder="Email"><br>
+            <input type="password" required="required" name="password" minlength="6"  maxlength="40" placeholder="Пароль"><br>
+            <input type="text" required="required" name="fname" maxlength="30" placeholder="Имя"><br>
+            <input type="text" required="required" name="lname"  maxlength="30" placeholder="Фамилия"><br>
+            <input type="checkbox" required="required" name="check">
+            <label for="check">Согласиться с условиями и политикой</label><br>
+            <button type="submit">Регистрация</button>
+        </form>
+        <h6>Если вы уже зарегистрированы, <a href="#myModal" class="trigger-btn" data-toggle="modal">Авторизируйтесь тут</a></h6>
+  </div>
