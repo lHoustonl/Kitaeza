@@ -1,0 +1,62 @@
+<div class="content">
+    <h3>Корзина</h3>
+    <table>
+        <tr class="table-items table-head">
+            <th>Наименование товара</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+            <th>Удалить</th>
+        </tr>
+        <tr class="table-items table-item">
+            <td><img id="table-img"><span>Фильтр мочевины</span> Sampa 010.814</td>
+            <td><span>2500 ₽</span></td>
+            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
+            <td><span class="summ">2500 ₽</span></td>
+            <td>
+                <a href="/delete">
+                    <img src="/TrashBasket.svg">
+                </a>
+            </td>
+        </tr>
+        <tr class="table-items table-item">
+            <td><img id="table-img"><span>Фильтр мочевины</span> Sampa 010.814</td>
+            <td><span>2500 ₽</span></td>
+            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
+            <td><span class="summ">2500 Р</span></td>
+            <td>
+                <a href="/delete">
+                    <img src="/TrashBasket.svg">
+                </a>
+            </td>
+        </tr>
+        <tr class="table-items table-item">
+            <td><img id="table-img"><span>Фильтр мочевины</span> Sampa 010.814</td>
+            <td><span>2500 ₽</span></td>
+            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
+            <td><span class="summ">2500 ₽</span></td>
+            <td>
+                <a href="/delete">
+                    <img src="/TrashBasket.svg">
+                </a>
+            </td>
+        </tr>
+        <!-- Шаблон элемента -->
+        {{!-- <tr class="table-items table-item">
+            <td><img id="table-img"><span></span> </td>
+            <td><span> ₽</span></td>
+            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
+            <td><span class="summ"> ₽</span></td>
+            <td>
+                <a href="/delete">
+                    <img src="/TrashBasket.svg">
+                </a>
+            </td>
+        </tr> --}}
+    </table>
+    <div class="controls">
+        <a href="/orders" role="button" class="btn btn-secondary">К заказам</a>
+        <p>Итого к оплате: <span class="totalSumm"></span></p>
+        <button type="button" class="btn btn-danger">Оформить заказ</button>
+    </div>
+</div>

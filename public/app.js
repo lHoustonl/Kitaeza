@@ -36,10 +36,24 @@ try{
     // add items from img folder for trending section
   trendingList = document.querySelector('.trending-items-list');
   sourceToImgsFile = 'static/items/';
-  ITEMS_NAMES = ['shoe 1', 'shoe 2', 'shoe 3', 'shoe 4', 'shoe 5', 'shoe 6', 'shoe 7', 'shoe 8', 'shoe 9', 'shoe 10'];
+  ITEMS_NAMES = ['деталь 1', 'деталь 2', 'деталь 3', 'деталь 4', 'деталь 5', 'деталь 6', 'деталь 7', 'деталь 8', 'деталь 9', 'деталь 10'];
   PRICES = [55, 40, 70, 90, 10, 45, 60, 30, 70 ,100];
   
   for (i=0; i<10; i++){
+    // availability basket div
+    availabilityBasket = document.createElement('div');
+    availabilityBasket.className = 'item-availability-basket';
+    itemAvailability = document.createElement('p');
+    itemAvailability.innerHTML = '* В наличии';
+    itemAvailability.className = 'item-availability';
+    itemBasketLink = document.createElement('a');
+    itemBasketLink.href = '/addToBasket';
+    itemBasket = document.createElement('p');
+    itemBasket.innerHTML = 'Добавить в корзину';
+    itemBasket.className = 'item-basket';
+    itemBasketLink.appendChild(itemBasket);
+    availabilityBasket.appendChild(itemAvailability);
+    availabilityBasket.appendChild(itemBasketLink)
     // img div
       img = document.createElement('img');
       img.src = sourceToImgsFile + 'item' + i + ".jpg";
@@ -51,13 +65,14 @@ try{
       itemName.innerHTML = ITEMS_NAMES[i];
       itemName.className = 'name';
       itemPrice = document.createElement('p');
-      itemPrice.innerHTML = PRICES[i] + '$';
+      itemPrice.innerHTML = PRICES[i] + 'руб.';
       itemPrice.className = 'price';
       namePrice.appendChild(itemName);
       namePrice.appendChild(itemPrice);
       // adding all to main div
       item = document.createElement('div');
       item.className = 'trending-item';
+      item.appendChild(availabilityBasket);
       item.appendChild(img);
       item.appendChild(namePrice);
       trendingList.appendChild(item);
@@ -69,6 +84,20 @@ try{
   PRICES = [55, 40, 70, 90, 10, 45, 60, 30, 70 ,100];
   
   for (i=10; i<20; i++){
+      // availability basket div
+      availabilityBasket = document.createElement('div');
+      availabilityBasket.className = 'item-availability-basket';
+      itemAvailability = document.createElement('p');
+      itemAvailability.innerHTML = '* В наличии';
+      itemAvailability.className = 'item-availability';
+      itemBasketLink = document.createElement('a');
+      itemBasketLink.href = '/addToBasket';
+      itemBasket = document.createElement('p');
+      itemBasket.innerHTML = 'Добавить в корзину';
+      itemBasket.className = 'item-basket';
+      itemBasketLink.appendChild(itemBasket);
+      availabilityBasket.appendChild(itemAvailability);
+      availabilityBasket.appendChild(itemBasketLink)
     // img div
       img = document.createElement('img');
       img.src = sourceToImgsFile + 'item' + i + ".jpg";
@@ -87,6 +116,7 @@ try{
       // adding all to main div
       item = document.createElement('div');
       item.className = 'gear-items';
+      item.appendChild(availabilityBasket);
       item.appendChild(img);
       item.appendChild(namePrice);
       gearList.appendChild(item);
@@ -134,3 +164,28 @@ try{
     });
    
   }
+
+  try{
+    var sum = 0;
+    $('.summ').each(function(){
+      sum += parseInt($(this).text())
+    })
+    $('.totalSumm').html(sum + " ₽")
+  }
+  catch (err) {console.log(err);}
+  
+
+  btn = document.querySelector('.toggler');
+  priceRange = document.querySelector('.price-range');
+  filterPrice = document.querySelector('.filter-price');
+  btn.addEventListener('click', ()=>{
+    if (btn.ariaExpanded == "false"){
+      priceRange.classList.remove('collapsed');
+      filterPrice.classList.remove('height-of-div');
+      btn.ariaExpanded = "true";
+    } else {
+      priceRange.classList.add('collapsed');
+      filterPrice.classList.add('height-of-div');
+      btn.ariaExpanded = "false";
+   }
+  })

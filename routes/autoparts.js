@@ -1,9 +1,12 @@
 const { Router } = require('express')
+const { Mongoose } = require('mongoose')
 const Autopart = require('../models/Autopart')
+const Cart = require('../models/Cart')
 const User = require('../models/User')
 const router = Router()
 var currentUser
 var isLoggedIn = false
+let ITEMS_IN_BASKET = []
 
 router.get('/', async (req, res) => {
     const users = await User.find({}).lean()
@@ -82,5 +85,37 @@ router.post('/authorization', async (req, res) => {
         console.log(user)
     }
 })
+
+router.get('/basket', (req, res) => {
+    res.render('basket', {
+        title: 'Корзина',
+        isLoggedIn
+    })
+})
+
+router.get('/orders', (req, res) => {
+    res.render('orders', {
+        title: 'Заказы',
+        isLoggedIn
+    })
+})
+
+router.get('/catalog', (req, res) => {
+    res.render('catalog', {
+        title: 'Каталог',
+        isLoggedIn
+    })
+})
+
+// router.get('/addToBasket', async (req, res) => {
+//     if(currentUser)
+//     {
+
+//     }
+//     else
+//     {
+
+//     }
+// })
 
 module.exports = router
