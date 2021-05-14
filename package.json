@@ -10,6 +10,7 @@
   "author": "Denis Averianov",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.4",
     "express": "^4.17.1",
     "express-handlebars": "^3.0.2",
     "handlebars-helpers": "^0.10.0",

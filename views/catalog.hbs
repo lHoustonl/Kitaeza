@@ -1,413 +1,252 @@
 <div class="content catalog">
     <div class="filter-list in-scroller">
-        <div class="filter-price">
-            <div class="headline" aria-expanded="true">
-                <h4>Цена</h4>
-                <p role="button" class="toggler">+</p>
+        <div class="filter filter-block">
+            <div class="headline">
             </div>
-            <div class="price-range">
+                <h4>Двигатели</h4>
+                <h4>Коробки передач</h4>
+                <h4>Ходовые</h4>
+                <h4>Рулевые</h4>
+                <h4>Фары</h4>
+        </div>
+        <div class="filter-price filter-block">
+            <div class="headline">
+                <h4>Цена</h4>
+            </div>
+            <div class="price-range filter-block-content">
                 <input placeholder="От 1" min="1" max="100000" type="number">₽
-                <span>--</span>
                 <input placeholder="До 100000" min="1" max="100000" type="number">₽
             </div>
         </div>
-        <div class="filter-producer">
-            <div class="headline" aria-expanded="true">
+        <div class="filter-producer filter-block">
+            <div class="headline">
                 <h4>Производитель</h4>
-                <p role="button" class="toggler">+</p>
             </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
+            <div class="filter-block-content">
+                {{#each brand}}
+                <div class="checkbox-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <input type="checkbox">
+                            </div>
                         </div>
+                        <input type="text" class="form-control" readonly="true" value="{{ brand.title }}">
                     </div>
-                    <input type="text" class="form-control" readonly="true" value="BYD">
+                    <p>От {{ price }} ₽</p>
                 </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Chery">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="FAW">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Geely">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Great Wall">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Lifan">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Vortex">
-                </div>
-                <p>От 1234 ₽</p>
-            </div>
-            <div class="checkbox-group">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox">
-                        </div>
-                    </div>
-                    <input type="text" class="form-control" readonly="true" value="Тагаз">
-                </div>
-                <p>От 1234 ₽</p>
+                {{/each}}
             </div>
         </div>
     </div>
     <div class="catalog-products">
-                <div class="product-grid-items">
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a href="/" class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a href="/" class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-body">
-                            <figure>
-                                <a class="product-card-link-overlay">
-                                    Моторное масло
-                                </a>
-                                <a class="product-card-img-link-overlay">
-                                    <div>
-                                        <img class="product-card-image" src="/product-img2.png" sizes="(max-width: 1023px) 318px, (max-width: 1023px) and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) 592px, (min-width: 1024px) 592px" alt="Моторное масло">
-                                    </div>
-                                </a>
-                                <div class="product-card-info">
-                                    <div class="product-card-titles">
-                                        <div class="product-card-title">
-                                            Моторное масло
-                                        </div>
-                                        <div class="product-card-subtitle">
-                                            MOTUL 5100 4T
-                                        </div>
-                                    </div>
-                                    <div class="product-card-price">
-                                        <div>
-                                            1234 ₽
-                                        </div>
-                                        <div>
-                                        <a href="/basket">
-                                            <img class="basket-img" src="/basket.svg">
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
+        <div class="product-grid-items">
+            <div class="sorting">
+                Сортировать по:
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="decrease">
+                    <label class="form-check-label" for="inlineRadio1">Цена(высокая-низкая)</label>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="encrease">
+                    <label class="form-check-label" for="inlineRadio2">Цена(низкая-высокая)</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="recommended">
+                    <label class="form-check-label" for="inlineRadio2">Рекомендованное</label>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-body">
+                    <figure>
+                        <a href="/product" class="product-card-img-link-overlay">
+                            <div>
+                                <img class="product-card-image" src="{{ Source }}" alt="Моторное масло">
+                            </div>
+                        </a>                                
+                        <a href="/product" class="product-card-link-overlay">
+                            <div class="product-card-info">
+                                <div class="product-card-available">
+                                    • в наличии
+                                </div>
+                                <div class="product-card-titles">
+                                    <div class="product-card-title">
+                                        Моторное масло
+                                    </div>
+                                    <div class="product-card-subtitle">
+                                        MOTUL 5100 4T
+                                    </div>
+                                </div>
+                                <div class="product-card-price">
+                                    <div>
+                                        1234 ₽
+                                    </div>
+                                    <div class="icon">
+                                        <a href="/basket">
+                                            <img class="basket-img" src="/basket.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-body">
+                    <figure>
+                        <a href="#" class="product-card-img-link-overlay">
+                            <div>
+                                <img class="product-card-image" src="{{ Source }}" alt="Моторное масло">
+                            </div>
+                        </a>                                
+                        <a href="/404" class="product-card-link-overlay">
+                            <div class="product-card-info">
+                                <div class="product-card-orderable">
+                                    • под заказ
+                                </div>
+                                <div class="product-card-titles">
+                                    <div class="product-card-title">
+                                        Моторное масло
+                                    </div>
+                                    <div class="product-card-subtitle">
+                                        MOTUL 5100 4T
+                                    </div>
+                                </div>
+                                <div class="product-card-price">
+                                    <div>
+                                        1234 ₽
+                                    </div>
+                                    <div>
+                                        <a href="/basket">
+                                            <img class="basket-img" src="/basket.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-body">
+                    <figure>
+                        <a href="#" class="product-card-img-link-overlay">
+                            <div>
+                                <img class="product-card-image" src="{{ Source }}" alt="Моторное масло">
+                            </div>
+                        </a>                                
+                        <a href="/404" class="product-card-link-overlay">
+                            <div class="product-card-info">
+                                <div class="product-card-available">
+                                    • в наличии
+                                </div>
+                                <div class="product-card-titles">
+                                    <div class="product-card-title">
+                                        Моторное масло
+                                    </div>
+                                    <div class="product-card-subtitle">
+                                        MOTUL 5100 4T
+                                    </div>
+                                </div>
+                                <div class="product-card-price">
+                                    <div>
+                                        1234 ₽
+                                    </div>
+                                    <div>
+                                        <a href="/basket">
+                                            <img class="basket-img" src="/basket.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-body">
+                    <figure>
+                        <a href="#" class="product-card-img-link-overlay">
+                            <div>
+                                <img class="product-card-image" src="{{ Source }}" alt="Моторное масло">
+                            </div>
+                        </a>                                
+                        <a href="/404" class="product-card-link-overlay">
+                            <div class="product-card-info">
+                                <div class="product-card-available">
+                                    • в наличии
+                                </div>
+                                <div class="product-card-titles">
+                                    <div class="product-card-title">
+                                        Моторное масло
+                                    </div>
+                                    <div class="product-card-subtitle">
+                                        MOTUL 5100 4T
+                                    </div>
+                                </div>
+                                <div class="product-card-price">
+                                    <div>
+                                        1234 ₽
+                                    </div>
+                                    <div>
+                                        <a href="/basket">
+                                            <img class="basket-img" src="/basket.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+{{#each products}}
+            <div class="product-card">
+                <div class="product-card-body">
+                    <figure>
+                        <a href="{{ product-link }}" class="product-card-img-link-overlay">
+                            <div>
+                                <img class="product-card-image" src="{{ product-source }}" alt="{{ product-title }}">
+                            </div>
+                        </a>                                
+                        <a href="{{ product-link }}" class="product-card-link-overlay">
+                            <div class="product-card-info">
+                                {{#if available}}
+                                <div class="product-card-available">
+                                    • в наличии
+                                </div>
+                                {{else}}
+                                <div class="product-card-orderable">
+                                    Под заказ
+                                </div>
+                                {{/if}}
+                                <div class="product-card-titles">
+                                    <div class="product-card-title">
+                                        {{ product-title }}
+                                    </div>
+                                    <div class="product-card-subtitle">
+                                        {{ product-subtitle }}
+                                    </div>
+                                </div>
+                                <div class="product-card-price">
+                                    <div>
+                                        {{ product-price }}
+                                    </div>
+                                    <div>
+                                        <a href="/basket">
+                                            <img class="basket-img" src="/basket.svg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+{{/each}}
+        </div>
     </div>
 </div>

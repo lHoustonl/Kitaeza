@@ -6,7 +6,7 @@
             <div class="modal-content">
                 <form action="/authorization" method="POST" class="login-form">
                     <div class="modal-header">				
-                        <h4 class="modal-title">Login</h4>
+                        <h4 class="modal-title">Авторизация</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">				
@@ -16,16 +16,16 @@
                         </div>
                         <div class="form-group">
                             <div class="clearfix">
-                                <label>Password</label>
-                                <a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
+                                <label>Пароль</label>
+                                <a href="#" class="pull-right text-muted"><small>Забыли?</small></a>
                             </div>
                             
                             <input type="password" class="form-control" required="required" name="password">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
-                        <input type="submit" class="btn btn-secondary pull-right" value="Login">
+                        <label class="checkbox-inline pull-left"><input type="checkbox"> Запомнить меня</label>
+                        <input type="submit" class="btn btn-secondary pull-right" value="Войти">
                     </div>
                 </form>
             </div>
@@ -33,9 +33,9 @@
     </div>
     <div class="container1">
         {{> header}}
-            {{#if_eq title 'Register page'}}
+            {{#if_eq title '404'}}
             {{else}}
-                {{#if_eq title '404'}}
+                {{#if_eq hide 'hide'}}
                 {{else}}
                     <div class="container2">
                         <div class="section3">
@@ -45,15 +45,13 @@
                             <img src="/1.svg" alt="КитаЁза" class="img-logo3">
                             <div class="list">
                                 <li style="padding-left: 0px;"><a href="/catalog">Каталог</a></li>
-                                <li><a href="">Поиск по VIN</a></li>
                                 <li><a href="">Поиск по автомобилю</a></li>
-                                <li><a href="">Шины</a></li>
-                                <li><a href="">Диски</a></li>
-                                <li><a href="">Лампы</a></li>
-                                <li><a href="">АКБ</a></li>
-                                <li>8-800-555-35-35</li>
+                                <li><a href="">Поиск по артиклу</a></li>
+                                <li><a href="">Ходовые</a></li>
+                                <li><a href="">Двигатели</a></li>
+                                <li><a href="">Коробки передач</a></li>
+                                <li>8-902-366-33-97</li>
                             </div>
-                            <a></a>
                         </div>
                     </div>
                 {{/if_eq}}

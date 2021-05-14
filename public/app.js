@@ -41,19 +41,19 @@ try{
   
   for (i=0; i<10; i++){
     // availability basket div
-    availabilityBasket = document.createElement('div');
-    availabilityBasket.className = 'item-availability-basket';
-    itemAvailability = document.createElement('p');
-    itemAvailability.innerHTML = '* В наличии';
-    itemAvailability.className = 'item-availability';
-    itemBasketLink = document.createElement('a');
-    itemBasketLink.href = '/addToBasket';
-    itemBasket = document.createElement('p');
-    itemBasket.innerHTML = 'Добавить в корзину';
-    itemBasket.className = 'item-basket';
-    itemBasketLink.appendChild(itemBasket);
-    availabilityBasket.appendChild(itemAvailability);
-    availabilityBasket.appendChild(itemBasketLink)
+    // availabilityBasket = document.createElement('div');
+    // availabilityBasket.className = 'item-availability-basket';
+    // itemAvailability = document.createElement('p');
+    // itemAvailability.innerHTML = '• в наличии';
+    // itemAvailability.className = 'item-availability';
+    // itemBasketLink = document.createElement('a');
+    // itemBasketLink.href = '/addToBasket';
+    // itemBasket = document.createElement('p');
+    // itemBasket.innerHTML = 'Добавить в корзину';
+    // itemBasket.className = 'item-basket';
+    // itemBasketLink.appendChild(itemBasket);
+    // availabilityBasket.appendChild(itemAvailability);
+    // availabilityBasket.appendChild(itemBasketLink)
     // img div
       img = document.createElement('img');
       img.src = sourceToImgsFile + 'item' + i + ".jpg";
@@ -72,7 +72,7 @@ try{
       // adding all to main div
       item = document.createElement('div');
       item.className = 'trending-item';
-      item.appendChild(availabilityBasket);
+      // item.appendChild(availabilityBasket);
       item.appendChild(img);
       item.appendChild(namePrice);
       trendingList.appendChild(item);
@@ -85,19 +85,19 @@ try{
   
   for (i=10; i<20; i++){
       // availability basket div
-      availabilityBasket = document.createElement('div');
-      availabilityBasket.className = 'item-availability-basket';
-      itemAvailability = document.createElement('p');
-      itemAvailability.innerHTML = '* В наличии';
-      itemAvailability.className = 'item-availability';
-      itemBasketLink = document.createElement('a');
-      itemBasketLink.href = '/addToBasket';
-      itemBasket = document.createElement('p');
-      itemBasket.innerHTML = 'Добавить в корзину';
-      itemBasket.className = 'item-basket';
-      itemBasketLink.appendChild(itemBasket);
-      availabilityBasket.appendChild(itemAvailability);
-      availabilityBasket.appendChild(itemBasketLink)
+      // availabilityBasket = document.createElement('div');
+      // availabilityBasket.className = 'item-availability-basket';
+      // itemAvailability = document.createElement('p');
+      // itemAvailability.innerHTML = '• в наличии';
+      // itemAvailability.className = 'item-availability';
+      // itemBasketLink = document.createElement('a');
+      // itemBasketLink.href = '/addToBasket';
+      // itemBasket = document.createElement('p');
+      // itemBasket.innerHTML = 'Добавить в корзину';
+      // itemBasket.className = 'item-basket';
+      // itemBasketLink.appendChild(itemBasket);
+      // availabilityBasket.appendChild(itemAvailability);
+      // availabilityBasket.appendChild(itemBasketLink)
     // img div
       img = document.createElement('img');
       img.src = sourceToImgsFile + 'item' + i + ".jpg";
@@ -116,20 +116,56 @@ try{
       // adding all to main div
       item = document.createElement('div');
       item.className = 'gear-items';
-      item.appendChild(availabilityBasket);
+      // item.appendChild(availabilityBasket);
       item.appendChild(img);
       item.appendChild(namePrice);
       gearList.appendChild(item);
   }
   } catch (err) {console.log(err);}
+
+  similarList = document.querySelector('.similar-items-list');
+  sourceToImgsFile = 'static/items/';
+  ITEMS_NAMES = ['масло 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7', 'item 8', 'item 9', 'item 10'];
+  PRICES = [55, 40, 70, 90, 10, 45, 60, 30, 70 ,100];
   
-  // remove flash messages after 3 seconds 
-  flash = document.querySelector('.alert');
-  setTimeout(() => {
-    if (flash){
-      flash.remove();
-    } 
-  }, 3000); 
+  for (i=10; i<20; i++){
+      // availability basket div
+      // availabilityBasket = document.createElement('div');
+      // availabilityBasket.className = 'item-availability-basket';
+      // itemAvailability = document.createElement('p');
+      // itemAvailability.innerHTML = '• в наличии';
+      // itemAvailability.className = 'item-availability';
+      // itemBasketLink = document.createElement('a');
+      // itemBasketLink.href = '/addToBasket';
+      // itemBasket = document.createElement('p');
+      // itemBasket.innerHTML = 'Добавить в корзину';
+      // itemBasket.className = 'item-basket';
+      // itemBasketLink.appendChild(itemBasket);
+      // availabilityBasket.appendChild(itemAvailability);
+      // availabilityBasket.appendChild(itemBasketLink)
+    // img div
+      img = document.createElement('img');
+      img.src = sourceToImgsFile + 'item' + i + ".jpg";
+      img.className = 'items-img';
+    // price name div
+      namePrice = document.createElement('div');
+      namePrice.className = 'item-name-price';
+      itemName = document.createElement('p');
+      itemName.innerHTML = ITEMS_NAMES[i-10];
+      itemName.className = 'name';
+      itemPrice = document.createElement('p');
+      itemPrice.innerHTML = PRICES[i-10] + '$';
+      itemPrice.className = 'price';
+      namePrice.appendChild(itemName);
+      namePrice.appendChild(itemPrice);
+      // adding all to main div
+      item = document.createElement('div');
+      item.className = 'similar-item';
+      // item.appendChild(availabilityBasket);
+      item.appendChild(img);
+      item.appendChild(namePrice);
+      similarList.appendChild(item);
+  }
   
   function addBlur(){
     $('.container2').children().addClass('blurr');
@@ -166,26 +202,40 @@ try{
   }
 
   try{
-    var sum = 0;
+    var summ = 0;
     $('.summ').each(function(){
-      sum += parseInt($(this).text())
+      summ += parseInt($(this).text())
     })
-    $('.totalSumm').html(sum + " ₽")
+    $('.totalSumm').html(summ + " ₽")
   }
   catch (err) {console.log(err);}
-  
 
-  btn = document.querySelector('.toggler');
-  priceRange = document.querySelector('.price-range');
-  filterPrice = document.querySelector('.filter-price');
-  btn.addEventListener('click', ()=>{
-    if (btn.ariaExpanded == "false"){
-      priceRange.classList.remove('collapsed');
-      filterPrice.classList.remove('height-of-div');
-      btn.ariaExpanded = "true";
-    } else {
-      priceRange.classList.add('collapsed');
-      filterPrice.classList.add('height-of-div');
-      btn.ariaExpanded = "false";
-   }
-  })
+  // btn = document.querySelector('.toggler');
+  // priceRange = document.querySelector('.price-range');
+  // filterPrice = document.querySelector('.filter-price');
+  // btn.addEventListener('click', ()=>{
+  //   if (btn.ariaExpanded == "false"){
+  //     priceRange.classList.remove('collapsed');
+  //     filterPrice.classList.remove('height-of-div');
+  //     btn.ariaExpanded = "true";
+  //   } else {
+  //     priceRange.classList.add('collapsed');
+  //     filterPrice.classList.add('height-of-div');
+  //     btn.ariaExpanded = "false";
+  //  }
+  // })
+
+  // btn = document.querySelector('.toggler');
+  // priceRange = document.querySelector('.price-range');
+  // filterPrice = document.querySelector('.filter-price');
+  // btn.addEventListener('click', ()=>{
+  //   if (btn.ariaExpanded == "false"){
+  //     priceRange.classList.remove('collapsed');
+  //     filterPrice.classList.remove('height-of-div');
+  //     btn.ariaExpanded = "true";
+  //   } else {
+  //     priceRange.classList.add('collapsed');
+  //     filterPrice.classList.add('height-of-div');
+  //     btn.ariaExpanded = "false";
+  //  }
+  // })
