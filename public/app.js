@@ -123,49 +123,52 @@ try{
   }
   } catch (err) {console.log(err);}
 
-  similarList = document.querySelector('.similar-items-list');
-  sourceToImgsFile = 'static/items/';
-  ITEMS_NAMES = ['масло 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7', 'item 8', 'item 9', 'item 10'];
-  PRICES = [55, 40, 70, 90, 10, 45, 60, 30, 70 ,100];
-  
-  for (i=10; i<20; i++){
-      // availability basket div
-      // availabilityBasket = document.createElement('div');
-      // availabilityBasket.className = 'item-availability-basket';
-      // itemAvailability = document.createElement('p');
-      // itemAvailability.innerHTML = '• в наличии';
-      // itemAvailability.className = 'item-availability';
-      // itemBasketLink = document.createElement('a');
-      // itemBasketLink.href = '/addToBasket';
-      // itemBasket = document.createElement('p');
-      // itemBasket.innerHTML = 'Добавить в корзину';
-      // itemBasket.className = 'item-basket';
-      // itemBasketLink.appendChild(itemBasket);
-      // availabilityBasket.appendChild(itemAvailability);
-      // availabilityBasket.appendChild(itemBasketLink)
-    // img div
-      img = document.createElement('img');
-      img.src = sourceToImgsFile + 'item' + i + ".jpg";
-      img.className = 'items-img';
-    // price name div
-      namePrice = document.createElement('div');
-      namePrice.className = 'item-name-price';
-      itemName = document.createElement('p');
-      itemName.innerHTML = ITEMS_NAMES[i-10];
-      itemName.className = 'name';
-      itemPrice = document.createElement('p');
-      itemPrice.innerHTML = PRICES[i-10] + '$';
-      itemPrice.className = 'price';
-      namePrice.appendChild(itemName);
-      namePrice.appendChild(itemPrice);
-      // adding all to main div
-      item = document.createElement('div');
-      item.className = 'similar-item';
-      // item.appendChild(availabilityBasket);
-      item.appendChild(img);
-      item.appendChild(namePrice);
-      similarList.appendChild(item);
-  }
+  try{
+    similarList = document.querySelector('.similar-items-list');
+    sourceToImgsFile = 'static/items/';
+    ITEMS_NAMES = ['масло 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7', 'item 8', 'item 9', 'item 10'];
+    PRICES = [55, 40, 70, 90, 10, 45, 60, 30, 70 ,100];
+    
+    for (i=10; i<20; i++){
+        // availability basket div
+        // availabilityBasket = document.createElement('div');
+        // availabilityBasket.className = 'item-availability-basket';
+        // itemAvailability = document.createElement('p');
+        // itemAvailability.innerHTML = '• в наличии';
+        // itemAvailability.className = 'item-availability';
+        // itemBasketLink = document.createElement('a');
+        // itemBasketLink.href = '/addToBasket';
+        // itemBasket = document.createElement('p');
+        // itemBasket.innerHTML = 'Добавить в корзину';
+        // itemBasket.className = 'item-basket';
+        // itemBasketLink.appendChild(itemBasket);
+        // availabilityBasket.appendChild(itemAvailability);
+        // availabilityBasket.appendChild(itemBasketLink)
+      // img div
+        img = document.createElement('img');
+        img.src = sourceToImgsFile + 'item' + i + ".jpg";
+        img.className = 'items-img';
+      // price name div
+        namePrice = document.createElement('div');
+        namePrice.className = 'item-name-price';
+        itemName = document.createElement('p');
+        itemName.innerHTML = ITEMS_NAMES[i-10];
+        itemName.className = 'name';
+        itemPrice = document.createElement('p');
+        itemPrice.innerHTML = PRICES[i-10] + '$';
+        itemPrice.className = 'price';
+        namePrice.appendChild(itemName);
+        namePrice.appendChild(itemPrice);
+        // adding all to main div
+        item = document.createElement('div');
+        item.className = 'similar-item';
+        // item.appendChild(availabilityBasket);
+        item.appendChild(img);
+        item.appendChild(namePrice);
+        similarList.appendChild(item);
+    }
+
+  } catch (err) {console.log(err)}
   
   function addBlur(){
     $('.container2').children().addClass('blurr');
@@ -239,3 +242,8 @@ try{
   //     btn.ariaExpanded = "false";
   //  }
   // })
+
+  var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+  var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+    return new bootstrap.Dropdown(dropdownToggleEl)
+  })

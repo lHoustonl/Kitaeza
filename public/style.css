@@ -236,7 +236,7 @@ body {
     padding-top: 129px;
     transition-duration: 1s;
     width: 80%;
-    margin: auto;
+    margin: 0 auto;
 }
 .contents1 .img1 {
     background-image: url(big-img.jpg);
@@ -544,6 +544,14 @@ details[open] summary::after {
     font-weight: bold;
 }
 .login input:not([type='checkbox']) {
+    width: 350px;
+    height: 50px;
+    margin-top: 10px;
+    border: rgba(128, 128, 128, 0.11) 1px solid;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.login select {
     width: 350px;
     height: 50px;
     margin-top: 10px;
@@ -886,4 +894,24 @@ details[open] summary::after {
 }
 .alert.alert-primary {
     margin-bottom: 0px;
+}
+.add-form-nav {
+    width: 25%;
+    height: auto;
+    background-color: rgb(238, 234, 234);
+}
+.add-form-forms {
+    width: 25%;
+    height: auto;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
 }
