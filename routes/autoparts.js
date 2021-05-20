@@ -183,6 +183,12 @@ async function addUser(user){
     })
 }
 
+router.get('/add', (req, res) => {
+    res.render('add-order', {
+        title: 'add',
+        hide
+    })
+})
 // router.get('/addToBasket', async (req, res) => {
 //     if(currentUser)
 //     {

@@ -266,12 +266,72 @@ body {
     float: right;
 }
 .block {
-    background-color: rgb(238, 234, 234);
+    background-color: lightgray;
+}
+.img-block {
+    height: 80%;
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-bottom: auto;
+    width: auto;
+}
+.sale-block {
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: max-content;
+    color: white;
+    background-color: rgba(255, 42, 43, 1);
+
+}
+.info-block {
+    height: 80%;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 5%;
+    padding-top: 5%;
+}
+.price-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.bold {
+    font-weight: bold;
+}
+.line-through {
+    text-decoration: line-through;
+    color: gray;
+}
+.top-sales-title {
+    padding-left: 2rem;
+}
+.top-sales-block {
+    padding: 2rem;
+    height: auto;
+    width: calc(100% - 6rem);
+}
+.top-sales-img {
+    height: auto;
+    width: 90%;
+    padding: 2rem;
 }
 .mobile-app {
     height: 200px;
     width: 100%;
     margin-bottom: 25px;
+}
+.mobile-app > h3 {
+    position: absolute;
+    top: calc(200px + 1.75rem / 2);
+    width: 50%;
+    margin-left: 15%;
+}
+.mobile-img {
+    margin-left: 80%;
+    height: 200px;
+    padding: 10px;
 }
 .left-sided-blocks {
     width: 59%;
@@ -782,7 +842,7 @@ details[open] summary::after {
 }
 .product-card-image {
     max-width: 100%;
-    background: rgb(238, 234, 234);;
+    background: rgb(238, 234, 234);
     width: 100%;
     height: auto;
     align-items: top;
