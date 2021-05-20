@@ -183,13 +183,6 @@ async function addUser(user){
     })
 }
 
-router.get('/adminpanel', (req, res) => {
-    res.render('adminpanel', {
-        hide,
-        isLoggedIn
-    })
-})
-
 // router.get('/addToBasket', async (req, res) => {
 //     if(currentUser)
 //     {
