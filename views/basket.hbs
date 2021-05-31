@@ -1,70 +1,85 @@
-<div class="content">
-    <h3>Корзина</h3>
-    <table>
-        <tr class="table-items table-head">
-            <th>Наименование товара</th>
-            <th>Цена</th>
-            <th>Количество</th>
-            <th>Сумма</th>
-            <th>Удалить</th>
-        </tr>
-        <tr class="table-items table-item">
-            <td>
-                <div class="table-img-title">
-                    <img class="table-img" src="/product-in-basket.jpg">
-                    <div class="table-titles">
-                        <div class="table-title">Фильтр мочевины</div>
-                        <div class="table-subtitle">Sampa 010.814</div>
+<div class="contents1">
+    <div class="basket-items-block float-left">
+        <h4 class="bold">Корзина</h4>
+        <div class="basket-items-list">
+            <div class="basket-item separator space-s">
+                <div>
+                    <img class="basket-item-image float-left" src="product-img2.png">
+                    <div class="float-right">
+                        1234 ₽
                     </div>
+                    <div>
+                        <h5 class="bold">MOTUL 5100 4T</h5>
+                        Моторное масло
+                    </div>
+                    <label>Количество</label>
+                    <input type="number" class="input-quantity separator bold" placeholder="1">
+                    <div class="basket-item-buttons">
+                        <button class="basket-item-button button-without-focus">
+                            Перенести в избранное
+                        </button>
+                        <button class="basket-item-button button-without-focus">
+                            Удалить
+                        </button>
+                    </div>
+                    <div class="clear"></div>
                 </div>
-            </td>
-            <td><span>2500 ₽</span></td>
-            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
-            <td><span class="summ">2500 ₽</span></td>
-            <td>
-                <a href="/delete">
-                    <img src="/TrashBasket.svg">
-                </a>
-            </td>
-        </tr>
-        <tr class="table-items table-item">
-            <td><img id="table-img"><span>Фильтр мочевины</span> Sampa 010.814</td>
-            <td><span>2500 ₽</span></td>
-            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
-            <td><span class="summ">2500 Р</span></td>
-            <td>
-                <a href="/delete">
-                    <img src="/TrashBasket.svg">
-                </a>
-            </td>
-        </tr>
-        <tr class="table-items table-item">
-            <td><img id="table-img"><span>Фильтр мочевины</span> Sampa 010.814</td>
-            <td><span>2500 ₽</span></td>
-            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
-            <td><span class="summ">2500 ₽</span></td>
-            <td>
-                <a href="/delete">
-                    <img src="/TrashBasket.svg">
-                </a>
-            </td>
-        </tr>
-        <!-- Шаблон элемента -->
-        {{!-- <tr class="table-items table-item">
-            <td><img id="table-img"><span></span> </td>
-            <td><span> ₽</span></td>
-            <td><input type="number" min="1" max="100" value="1" placeholder="1">шт.</td>
-            <td><span class="summ"> ₽</span></td>
-            <td>
-                <a href="/delete">
-                    <img src="/TrashBasket.svg">
-                </a>
-            </td>
-        </tr> --}}
-    </table>
-    <div class="controls">
-        <a href="/orders" role="button" class="btn btn-secondary">К заказам</a>
-        <p>Итого к оплате: <span class="totalSumm"></span></p>
-        <button type="button" class="btn btn-danger">Оформить заказ</button>
+            </div>
+            <div class="basket-item separator space-s">
+                <div>
+                    <img class="basket-item-image float-left" src="product-img2.png">
+                    <div class="float-right">
+                        1234 ₽
+                    </div>
+                    <div>
+                        <h5 class="bold">MOTUL 5100 4T</h5>
+                        Моторное масло
+                    </div>
+                    <label>Количество</label>
+                    <input type="number" class="input-quantity separator bold" placeholder="1">
+                    <div class="basket-item-buttons">
+                        <button class="basket-item-button button-without-focus">
+                            Перенести в избранное
+                        </button>
+                        <button class="basket-item-button button-without-focus">
+                            Удалить
+                        </button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        {{!-- <div>В козине пока нет товаров, перейдите в <a href="/catalog">каталог</a> для выбора.</div> --}}
     </div>
+    <div class="basket-info-block float-right">
+        <div class="space-s-b separator">
+            <h4 class="bold">Сведения</h4>
+            <div class="product-card-price space">
+                <h5>Промежуточный итог</h5>
+                0 ₽
+            </div>
+            <div class="product-card-price space">
+                <h5>Предполагаемая стоимость доставки</h5>
+                0 ₽
+            </div>
+        </div>
+        <div class="space-s separator">
+            <div class="product-card-price">
+                <h5>Всего</h5>
+                <span class="totalSumm"></span>
+            </div>
+        </div>
+            <div class="buttons">
+                <button class="custom-button bandw button-without-focus">Оформить заказ</button>
+                <button class="custom-button wandb button-without-focus">
+                    Перейти в избранное <svg width="16px" height="16px" fill="#111" viewBox="0 0 24 24"><path d="M21.11 4a6.6 6.6 0 0 0-4.79-1.92A6.27 6.27 0 0 0 12 3.84 6.57 6.57 0 0 0 2.89 4c-2.8 2.68-2.45 7.3.88 10.76l6.84 6.63A2 2 0 0 0 12 22a2 2 0 0 0 1.37-.54l.2-.19.61-.57c.6-.57 1.42-1.37 2.49-2.41l2.44-2.39 1.09-1.07c3.38-3.55 3.8-8.1.91-10.83zm-2.35 9.4l-.25.24-.8.79-2.44 2.39c-1 1-1.84 1.79-2.44 2.36L12 20l-6.83-6.68c-2.56-2.66-2.86-6-.88-7.92a4.52 4.52 0 0 1 6.4 0l.09.08a2.12 2.12 0 0 1 .32.3l.9.94.9-.94.28-.27.11-.09a4.52 4.52 0 0 1 6.43 0c1.97 1.9 1.67 5.25-.96 7.98z"></path></svg>
+                </button>
+            </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="separator space-s"></div>
+<div class="similar">
+    <h3>Возможно вас заинтересует</h3>
+    <div class="similar-items-list"></div>
 </div>

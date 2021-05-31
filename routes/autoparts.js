@@ -24,8 +24,7 @@ router.get('/', async (req, res) => {
         res.render('index', {
             title: 'Main page',
             users,
-            isLoggedIn,
-            hide
+            isLoggedIn
         })
     }
 })
@@ -91,7 +90,8 @@ router.post('/authorization', async (req, res) => {
 router.get('/basket', (req, res) => {
     res.render('basket', {
         title: 'Корзина',
-        isLoggedIn
+        isLoggedIn,
+        hide
     })
 })
 

@@ -213,36 +213,6 @@ try{
   }
   catch (err) {console.log(err);}
 
-  // btn = document.querySelector('.toggler');
-  // priceRange = document.querySelector('.price-range');
-  // filterPrice = document.querySelector('.filter-price');
-  // btn.addEventListener('click', ()=>{
-  //   if (btn.ariaExpanded == "false"){
-  //     priceRange.classList.remove('collapsed');
-  //     filterPrice.classList.remove('height-of-div');
-  //     btn.ariaExpanded = "true";
-  //   } else {
-  //     priceRange.classList.add('collapsed');
-  //     filterPrice.classList.add('height-of-div');
-  //     btn.ariaExpanded = "false";
-  //  }
-  // })
-
-  // btn = document.querySelector('.toggler');
-  // priceRange = document.querySelector('.price-range');
-  // filterPrice = document.querySelector('.filter-price');
-  // btn.addEventListener('click', ()=>{
-  //   if (btn.ariaExpanded == "false"){
-  //     priceRange.classList.remove('collapsed');
-  //     filterPrice.classList.remove('height-of-div');
-  //     btn.ariaExpanded = "true";
-  //   } else {
-  //     priceRange.classList.add('collapsed');
-  //     filterPrice.classList.add('height-of-div');
-  //     btn.ariaExpanded = "false";
-  //  }
-  // })
-
   var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
   var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
     return new bootstrap.Dropdown(dropdownToggleEl)
