@@ -1,21 +1,21 @@
 <div class="contents1">
     <div class="float-left list-elements">
         <h4 class="bold">Список категорий</h4>
-        <div class="element">
-            <span class="bold">Наименование категории</span>
-            <span>Описание категории</span>
+        <div class="element separator space-s">
+            <span class="bold">Наименование</span>
+            <span>Описание</span>
         </div>
         {{#each category}}
-        <div class="element">
+        <div class="element separator space-s">
             <span class="bold">{{ title }}</span>
-            {{ description }}
+            <span>{{ description }}</span>
         </div>
         {{else}}
         Категорий пока нет
         {{/each}}
     </div>
     <div class="float-right add-form-forms login">
-        <form action="/add-category" method="POST" style="display: flex; flex-direction: column;">
+        <form action="/add-category" method="POST" class="admin-panel-form">
             <label for="title">Наименование</label>
             <input type="text" name="title" id="title" placeholder="Введите наименование категории" required>
             <label for="description">Описание</label>
@@ -23,6 +23,7 @@
                 
             <button type="submit" class="btn btn-light">Добавить</button>
         </form>
+        <a href="/admin-panel" type="button" class="btn btn-light back">Вернуться в панель администратора</a>
     </div>
     <div class="clear"></div>
 </div>

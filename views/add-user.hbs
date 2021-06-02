@@ -1,0 +1,50 @@
+<div class="contents1">
+    <div class="float-left list-elements">
+        <h4 class="bold">Список пользователей</h4>
+        <div class="element separator space-s">
+            <span class="bold">Email</span>
+            <span>Вконтакте</span>
+            <span>Телеграм</span>
+            <span>WhatsApp</span>
+            <span>Viber</span>
+        </div>
+        {{#each user}}
+        <div class="element separator space-s">
+            <span class="bold">{{ email }}</span>
+            <span>{{ vk }}</span>
+            <span>{{ telegram }}</span>
+            <span>{{ whatsapp }}</span>
+            <span>{{ viber }}</span>
+        </div>
+        {{else}}
+        Пользователей пока нет
+        {{/each}}
+    </div>
+    <div class="float-right add-form-forms login">
+        <form action="/add-user" method="POST" class="admin-panel-form">
+            <label for="user">Пользователь</label>
+            <select name="user" id="user" required>
+                <option selected>Выберите пользователя</option>
+                {{#each users}}
+                <option value="{{id}}">{{email}}</option>
+                {{else}}
+                <option>Пользователи отсутствуют</option>
+                {{/each}}
+            </select>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Введите Email пользователя" required>
+            <label for="vk">Вконтакте</label>
+            <input type="text" name="vk" id="vk" placeholder="Введите ссылку на Вконтакте">
+            <label for="telegram">Телеграм</label>
+            <input type="text" name="telegram" id="telegram" placeholder="Введите ссылку на Телеграм">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="text" name="whatsapp" id="whatsapp" placeholder="Введите ссылку на WhatsApp">
+            <label for="viber">Viber</label>
+            <input type="text" name="viber" id="viber" placeholder="Введите ссылку на Viber">
+                
+            <button type="submit" class="btn btn-light">Добавить</button>
+        </form>
+        <a href="/admin-panel" type="button" class="btn btn-light back">Вернуться в панель администратора</a>
+    </div>
+    <div class="clear"></div>
+</div>

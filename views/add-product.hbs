@@ -1,0 +1,52 @@
+<div class="contents1">
+    <div class="float-left list-elements">
+        <h4 class="bold">Список товаров</h4>
+        <div class="element separator space-s">
+            <span class="bold">Наименование</span>
+            <span>Категория</span>
+            <span>Описание</span>
+            <span>URL-Изображения</span>
+            <span>Стоимость</span>
+            <span>Количество</span>
+        </div>
+        {{#each product}}
+        <div class="element separator space-s">
+            <span class="bold">{{ title }}</span>
+            <span>{{ category }}</span>
+            <span>{{ description }}</span>
+            <span>{{ img-url }}</span>
+            <span>{{ price }}</span>
+            <span>{{ amount }}</span>
+        </div>
+        {{else}}
+        Товаров пока нет
+        {{/each}}
+    </div>
+    <div class="float-right add-form-forms login">
+        <form action="/add-product" method="POST" class="admin-panel-form">
+            <label for="title">Наименование</label>
+            <input type="text" name="title" id="title" placeholder="Введите наименование" required>
+            <label for="category">Категория</label>
+            <select name="category" id="category" required>
+                <option selected>Выберите категорию</option>
+                {{#each category}}
+                <option value="{{id}}">{{title}}</option>
+                {{else}}
+                <option>Категории отсутствуют</option>
+                {{/each}}
+            </select>
+            <label for="description">Описание</label>
+            <input type="text" name="description" id="description" placeholder="Введите описание" required>
+            <label for="img-url">URL-Изображения</label>
+            <input type="url" name="img-url" id="img-url" placeholder="Введите Url-изображения" pattern="http.*" size="30" required>
+            <label for="price">Стоимость</label>
+            <input type="number" name="price" id="price" placeholder="Введите стоимость" required>
+            <label for="amount">Количество</label>
+            <input type="number" name="amount" id="amount" placeholder="Введите количество" required>
+                
+            <button type="submit" class="btn btn-light">Добавить</button>
+        </form>
+        <a href="/admin-panel" type="button" class="btn btn-light back">Вернуться в панель администратора</a>
+    </div>
+    <div class="clear"></div>
+</div>

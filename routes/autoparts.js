@@ -214,25 +214,25 @@ router.get('/admin-panel/edit-category', (req, res) => {
 })
 
 
-router.get('/admin-panel', (req, res) => {
-    res.render('admin-panel', {
-        title: 'admin',
+router.get('/admin-panel/add-user', (req, res) => {
+    res.render('add-user', {
+        title: 'Add user',
         hide
     })
 })
 
 
-router.get('/admin-panel', (req, res) => {
-    res.render('admin-panel', {
-        title: 'admin',
+router.get('/admin-panel/edit-user', (req, res) => {
+    res.render('edit-user', {
+        title: 'Edit user',
         hide
     })
 })
 
 
-router.get('/admin-panel', (req, res) => {
-    res.render('admin-panel', {
-        title: 'admin',
+router.get('/admin-panel/add-product', (req, res) => {
+    res.render('add-product', {
+        title: 'Add product',
         hide
     })
 })

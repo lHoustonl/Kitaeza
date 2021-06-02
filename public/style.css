@@ -1025,31 +1025,27 @@ details[open] summary::after {
     background-color: rgb(238, 234, 234);
 }
 .add-form-forms {
-    width: 35vw;
+    width: 25vw;
     height: auto;
-    padding-bottom: 400px;
+    padding-bottom: 100px;
 }
 .add-form-forms input {
     margin-bottom: 20px;
 }
-.list-elements {
-    width: 40vw;
-    height: auto;
+.add-form-forms select {
+    margin-bottom: 20px;
 }
-.element {
-    margin: 1rem 0;
+.list-elements {
+    width: 50vw;
+    height: auto;
 }
 .element span {
     margin-right: 1rem;
 }
-.form-container {
+.admin-panel-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
-.add-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: auto;
+.back {
+    margin-top: 2rem;
 }
