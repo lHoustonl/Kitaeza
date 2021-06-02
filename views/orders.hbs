@@ -1,46 +1,49 @@
-<div class="content">
-    <h3>Мои заказы</h3>
-    <table>
-        <tr class="table-items table-head">
-            <th>№ Заказа</th>
-            <th>Дата заказа</th>
-            <th>Товар</th>
-            <th>Сумма</th>
-            <th>Количество</th>
-            <th>Статус</th>
-        </tr>
-        <tr class="table-items table-item">
-            <td><span>1</span></td>
-            <td><span>06.04.2021</span></td>
-            <td><span>34546436</span> BOSCH Щетки стеклоочистителя</td>
-            <td><span>1564.00 ₽</span> 1564.00 ₽ х 1</td>
-            <td><span>1</span></td>
-            <td id="status-waiting">• Ожидаем выдачи</td>
-        </tr>
-        <tr class="table-items table-item">
-            <td><span>2</span></td>
-            <td><span>06.04.2021</span></td>
-            <td><span>34546436</span> BOSCH Щетки стеклоочистителя</td>
-            <td><span>1564.00 ₽</span> 1564.00 ₽ х 1</td>
-            <td><span>1</span></td>
-            <td id="status-waiting">• Ожидаем выдачи</td>
-        </tr>
-        <tr class="table-items table-item">
-            <td><span>3</span></td>
-            <td><span>06.04.2021</span></td>
-            <td><span>34546436</span> BOSCH Щетки стеклоочистителя</td>
-            <td><span>1564.00 ₽</span> 1564.00 ₽ х 1</td>
-            <td><span>1</span></td>
-            <td id="status-delivered">• Товар доставлен</td>
-        </tr>
-        <!-- Шаблон элемента -->
-        {{!-- <tr class="table-items table-item">
-            <td><span></span></td>
-            <td><span></span></td>
-            <td><span></span> </td>
-            <td><span> ₽</span> ₽ </td>
-            <td><span></span></td>
-            <td id="status">• </td>
-        </tr> --}}
-    </table>
+<div class="contents1">
+    <div class="order-items-block float-left">
+        <h4 class="bold">Мои заказы</h4>
+        <div class="order-items-list">
+            <div class="order-items separator space-s">
+                <div class="order-info float-left">
+                    <span class="bold">Заказ № 1112541</span>
+                        <button class="order-button button-without-focus">
+                            Отменить заказ
+                        </button>
+                    Дата заказа: 04.10.2020
+                </div>
+                <div class="order-info float-right">
+                    <span class="bold">В обработке</span>
+                    2 товара
+                    <span>Сумма: 1234 ₽</span>
+                </div>
+                <div class="order-item">
+                    <img class="order-item-image" src="product-img2.png">
+                    <img class="order-item-image" src="product-img2.png">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="order-items separator space-s">
+                <div class="order-info float-left">
+                    <span class="bold">Заказ № 1112541</span>
+                    Дата заказа: 04.10.2020
+                </div>
+                <div class="order-info float-right">
+                    <span class="bold">Доставлен</span>
+                    2 товара
+                    <span>Сумма: 1234 ₽</span>
+                </div>
+                <div class="order-item">
+                    <img class="order-item-image" src="product-img2.png">
+                    <img class="order-item-image" src="product-img2.png">
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        {{!-- <div>У вас пока ещё нет заказов, перейдите в <a href="/catalog">корзину</a> для оформления.</div> --}}
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="separator space-s"></div>
+<div class="similar">
+    <h3>Возможно вас заинтересует</h3>
+    <div class="similar-items-list"></div>
 </div>

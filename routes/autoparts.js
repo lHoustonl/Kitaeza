@@ -98,7 +98,8 @@ router.get('/basket', (req, res) => {
 router.get('/orders', (req, res) => {
     res.render('orders', {
         title: 'Заказы',
-        isLoggedIn
+        isLoggedIn,
+        hide
     })
 })
 
@@ -189,15 +190,12 @@ router.get('/add', (req, res) => {
         hide
     })
 })
-// router.get('/addToBasket', async (req, res) => {
-//     if(currentUser)
-//     {
 
-//     }
-//     else
-//     {
-
-//     }
-// })
+router.get('/admin-panel', (req, res) => {
+    res.render('admin-panel', {
+        title: 'admin',
+        hide
+    })
+})
 
 module.exports = router

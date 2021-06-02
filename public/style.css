@@ -570,7 +570,7 @@ details[open] summary::after {
 .basket-item-buttons {
     padding-top: 2rem;
 }
-.basket-item-button {
+.item-button {
     display: inline-block;
     vertical-align: top;
     white-space: nowrap;
@@ -584,11 +584,47 @@ details[open] summary::after {
     line-height: 1;
     padding: 4px 0px;
 }
-.basket-item-button:hover {
+.item-button:hover {
     color: #757575;
 }
 .button-without-focus:focus {
     outline: none;
+}
+.order-items-block {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.order-items-list {
+    display: block;
+}
+.order-items {
+    display: block;
+}
+.order-item {
+    display: table;
+}
+.order-info {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: auto;
+    padding-right: 20px;
+    height: 100px;
+}
+.order-item-image {
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
+    background: rgb(238, 234, 234);
+}
+.order-button {
+    border-radius: 0.5rem;
+    border: 1px solid black;
+    background: none;
+}
+.order-button:hover {
+    border: 1px solid gray;
 }
 .with-header {
     margin-top: 300px;
@@ -785,9 +821,6 @@ details[open] summary::after {
 .headline p {
     font-weight: bold;
 }
-.content table {
-    width: 100%;
-}
 .filter-list {
     display: fixed;
     top: 55px;
@@ -924,7 +957,7 @@ details[open] summary::after {
     max-width: 100%;
     background: rgb(238, 234, 234);
     width: 100%;
-    height: auto;
+    height: 40vh;
     align-items: top;
     display: inline-block;
     transition-property: opacity;
