@@ -1,0 +1,28 @@
+<div class="contents1">
+    <div class="float-left list-elements">
+        <h4 class="bold">Список категорий</h4>
+        <div class="element">
+            <span class="bold">Наименование категории</span>
+            <span>Описание категории</span>
+        </div>
+        {{#each category}}
+        <div class="element">
+            <span class="bold">{{ title }}</span>
+            {{ description }}
+        </div>
+        {{else}}
+        Категорий пока нет
+        {{/each}}
+    </div>
+    <div class="float-right add-form-forms login">
+        <form action="/add-category" method="POST" style="display: flex; flex-direction: column;">
+            <label for="title">Наименование</label>
+            <input type="text" name="title" id="title" placeholder="Введите наименование категории" required>
+            <label for="description">Описание</label>
+            <input type="text" name="description" id="description" placeholder="Введите описание категории" required>
+                
+            <button type="submit" class="btn btn-light">Добавить</button>
+        </form>
+    </div>
+    <div class="clear"></div>
+</div>

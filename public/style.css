@@ -1025,8 +1025,22 @@ details[open] summary::after {
     background-color: rgb(238, 234, 234);
 }
 .add-form-forms {
-    width: 25%;
+    width: 35vw;
     height: auto;
+    padding-bottom: 400px;
+}
+.add-form-forms input {
+    margin-bottom: 20px;
+}
+.list-elements {
+    width: 40vw;
+    height: auto;
+}
+.element {
+    margin: 1rem 0;
+}
+.element span {
+    margin-right: 1rem;
 }
 .form-container {
     display: flex;

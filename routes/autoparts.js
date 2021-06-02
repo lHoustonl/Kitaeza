@@ -198,4 +198,52 @@ router.get('/admin-panel', (req, res) => {
     })
 })
 
+router.get('/admin-panel/add-category', (req, res) => {
+    res.render('add-category', {
+        title: 'Add category',
+        hide
+    })
+})
+
+
+router.get('/admin-panel/edit-category', (req, res) => {
+    res.render('edit-category', {
+        title: 'Edit category',
+        hide
+    })
+})
+
+
+router.get('/admin-panel', (req, res) => {
+    res.render('admin-panel', {
+        title: 'admin',
+        hide
+    })
+})
+
+
+router.get('/admin-panel', (req, res) => {
+    res.render('admin-panel', {
+        title: 'admin',
+        hide
+    })
+})
+
+
+router.get('/admin-panel', (req, res) => {
+    res.render('admin-panel', {
+        title: 'admin',
+        hide
+    })
+})
+
+
+router.get('/admin-panel', (req, res) => {
+    res.render('admin-panel', {
+        title: 'admin',
+        hide
+    })
+})
+
+
 module.exports = router
