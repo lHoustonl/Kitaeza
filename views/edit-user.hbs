@@ -22,15 +22,6 @@
     </div>
     <div class="float-right add-form-forms login">
         <form action="/edit-user" method="PUT" class="admin-panel-form">
-            <label for="user">Пользователь</label>
-            <select name="user" id="user" required>
-                <option selected>Выберите пользователя</option>
-                {{#each users}}
-                <option value="{{id}}">{{email}}</option>
-                {{else}}
-                <option>Пользователи отсутствуют</option>
-                {{/each}}
-            </select>
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Введите Email пользователя" required>
             <label for="vk">Вконтакте</label>
