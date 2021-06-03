@@ -31,6 +31,7 @@ app.use(autopartRoutes)
 app.use(function(req,res){
     res.status(404).render('404', {
         title: '404',
+        isLoggedIn: false
     })
 })
 

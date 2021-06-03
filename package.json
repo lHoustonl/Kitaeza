@@ -15,7 +15,8 @@
     "express-handlebars": "^3.0.2",
     "handlebars-helpers": "^0.10.0",
     "jquery": "^3.6.0",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const { Mongoose } = require('mongoose')
+const fetch = require("node-fetch");
 const Autopart = require('../models/Autopart')
 const Cart = require('../models/Cart')
 const User = require('../models/User')
@@ -184,13 +185,6 @@ async function addUser(user){
     })
 }
 
-router.get('/add', (req, res) => {
-    res.render('add-order', {
-        title: 'add',
-        hide
-    })
-})
-
 router.get('/admin-panel', (req, res) => {
     res.render('admin-panel', {
         title: 'admin',
@@ -205,14 +199,12 @@ router.get('/admin-panel/add-category', (req, res) => {
     })
 })
 
-
 router.get('/admin-panel/edit-category', (req, res) => {
     res.render('edit-category', {
         title: 'Edit category',
         hide
     })
 })
-
 
 router.get('/admin-panel/add-user', (req, res) => {
     res.render('add-user', {
@@ -221,14 +213,12 @@ router.get('/admin-panel/add-user', (req, res) => {
     })
 })
 
-
 router.get('/admin-panel/edit-user', (req, res) => {
     res.render('edit-user', {
         title: 'Edit user',
         hide
     })
 })
-
 
 router.get('/admin-panel/add-product', (req, res) => {
     res.render('add-product', {
@@ -237,7 +227,6 @@ router.get('/admin-panel/add-product', (req, res) => {
     })
 })
 
-
 router.get('/admin-panel/edit-product', (req, res) => {
     res.render('edit-product', {
         title: 'Edit product',
@@ -245,5 +234,34 @@ router.get('/admin-panel/edit-product', (req, res) => {
     })
 })
 
+async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *client
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+
+    return await response.json(); // parses JSON response into native JavaScript objects
+  }
+  
+  var user = {
+    email: 'ikli4ever@mail.ru',
+    password: '123'
+  }
+
+//   postData('https://kitaeza-api.herokuapp.com/api/users/', { user })
+//     .then((data) => {
+//         const token = data.user.token
+//       console.log(token);
+//     });
 
 module.exports = router
