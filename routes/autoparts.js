@@ -238,9 +238,9 @@ router.get('/admin-panel/add-product', (req, res) => {
 })
 
 
-router.get('/admin-panel', (req, res) => {
-    res.render('admin-panel', {
-        title: 'admin',
+router.get('/admin-panel/edit-product', (req, res) => {
+    res.render('edit-product', {
+        title: 'Edit product',
         hide
     })
 })

@@ -1,0 +1,30 @@
+<div class="contents1">
+    <div class="float-left list-elements">
+        <h4 class="bold">Список категорий</h4>
+        <div class="element separator space-s">
+            <span class="bold">Наименование</span>
+            <span>Описание</span>
+        </div>
+        {{#each category}}
+        <div class="element separator space-s">
+            <span class="bold">{{ title }}</span>
+            <span>{{ description }}</span>
+            <button class="btn btn-light">Редактировать</button>
+        </div>
+        {{else}}
+        Категорий пока нет
+        {{/each}}
+    </div>
+    <div class="float-right add-form-forms login">
+        <form action="/edit-category" method="PUT" class="admin-panel-form">
+            <label for="title">Наименование</label>
+            <input type="text" name="title" id="title" placeholder="Введите наименование категории" required>
+            <label for="description">Описание</label>
+            <input type="text" name="description" id="description" placeholder="Введите описание категории" required>
+                
+            <button type="submit" class="btn btn-light">Редактировать</button>
+        </form>
+        <a href="/admin-panel" type="button" class="btn btn-light back">Вернуться в панель администратора</a>
+    </div>
+    <div class="clear"></div>
+</div>
