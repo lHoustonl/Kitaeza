@@ -5,7 +5,11 @@
                 <a href="/"><img id="img-logo" src="/icon2.png" alt="Китаёза" title="Китаёза"></a>
             </div>
             {{#if isLoggedIn}}
-            <div class="LoggedUser">Пользователь: {{ currentUser.login }}</div>
+            {{#if_eq email 'admin'}}
+            <div class="LoggedUser"><a href="/admin-panel">Перейти в панель администрирования</a></div>
+            {{else}}
+            <div class="LoggedUser">Добро пожаловать, {{ email }}, <a href="/orders">перейти к заказам</a></div>
+            {{/if_eq}}
             {{/if}}
             <div class="navbar">
                 <a href="/help">Помощь</a>
@@ -13,7 +17,7 @@
                 {{#if_eq isLoggedIn false}}
                 <a href="/registration">Регистрация</a>
                 <p>|</p>
-                <a href="#myModal" class="trigger-btn" data-toggle="modal">Авторизация</a>
+                <a href="#myModal" class="trigger-btn" data-toggle="modal">Войти</a>
                 {{else}}
                 <a href="/logout">Выйти</a>
                 {{/if_eq}}
@@ -28,7 +32,7 @@
         <div class="alert alert-success">{{ messages.success }}</div>
         {{/if}}
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a href="https://goo.gl/maps/N4K3HDNAaXCSkfJx5">​ул. Шоссейная 24, 2 этаж</a>
+            <a href="https://goo.gl/maps/zfvKHDFdZC8nKnhb8">​ул. Шоссейная 24, 2 этаж</a>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,12 +41,12 @@
                 <li class="nav-item" id="newReleases">
                     <p class="nav-link"><a href="/catalog">Каталог</a></p>
                 </li>
-                <li class="nav-item" id="men">
+                {{!-- <li class="nav-item" id="men">
                     <p class="nav-link"><a href="/avtosearch">Поиск по автомобилю</a></p>
                 </li>
                 <li class="nav-item">
                     <p class="nav-link"><a href="/articulsearch">Поиск по артиклу</a></p>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <p class="nav-link">Двигатели</p>
                 </li>
@@ -50,7 +54,7 @@
                     <p class="nav-link">Ходовые</p>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link">Коробки передач</p>
+                    <p class="nav-link">Рулевые</p>
                 </li> 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
@@ -66,29 +70,29 @@
         </nav>
         <div class="drop-list-new-releases glassmorffect">
             <div class="drop-item">
-                <h1>Шины</h1>
-                <h4>Шины 1</h4>
-                <h4>Шины 2</h4>
-                <h4>Шины 3</h4>
+                <h1>Двигатели</h1>
+                <h4>Блоки</h4>
+                <h4>Цилиндры</h4>
+                <h4>Поршни</h4>
             </div>
             <div class="drop-item">
-                <h1>Диски</h1>
-                <h4>Диски 1</h4>
-                <h4>Диски 2</h4>
-                <h4>Диски 3</h4>
+                <h1>Коробки передач</h1>
+                <h4>Сцепление</h4>
+                <h4>Шестерни</h4>
+                <h4>Валы</h4>
             </div>
             <div class="drop-item">
-                <h1>Лампы</h1>
-                <h4>Лампы 1</h4>
-                <h4>Лампы 2</h4>
-                <h4>Лампы 3</h4>
+                <h1>Ходовые части</h1>
+                <h4>Рамы</h4>
+                <h4>Мосты</h4>
+                <h4>Подвески</h4>
             </div>
             <div class="drop-item">
-                <h1>АКБ</h1>
-                <h4>АКБ 1</h4>
-                <h4>АКБ 2</h4>
-                <h4>АКБ 3</h4>
-                <h4>АКБ 4</h4>
+                <h1>Рулевые части</h1>
+                <h4>Рулевые приводы</h4>
+                <h4>Рулевые механизмы</h4>
+                <h4>Рулевые колонки</h4>
+                <h4>Рулевые колёса</h4>
             </div>
         </div>
         <div class="drop-list-men glassmorffect">
@@ -116,3 +120,8 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var current = {{ user }}
+        localStorage.setItem()
+    </script>

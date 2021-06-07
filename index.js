@@ -1,8 +1,9 @@
 const express = require('express')
-const mongoose = require('mongoose')
 const path = require('path')
 const exphbs = require('express-handlebars')
-const autopartRoutes = require('./routes/autoparts')
+
+const index = require('./routes/index')
+
 const { mainModule } = require('process')
 
 const PORT = process.env.PORT || 3000
@@ -26,9 +27,9 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'static')))
 
-app.use(autopartRoutes)
+app.use(index)
 
-app.use(function(req,res){
+app.use(function(req, res) {
     res.status(404).render('404', {
         title: '404',
         isLoggedIn: false
@@ -36,18 +37,12 @@ app.use(function(req,res){
 })
 
 async function start() {
-    try{
-        mongoose.connect(
-            'mongodb+srv://dbadmin:e3OeKnK7KPcBnl8z@cluster0.04sre.mongodb.net/autoparts',
-            {
-            useNewUrlParser: true,
-            useFindAndModify: false,
-            useUnifiedTopology: true 
-        })
+    try {
         app.listen(PORT, () => {
             console.log('Server has been has been running...')
         })
-    }catch(e){
+    }
+    catch (e) {
         console.log(e)
     }
 }

@@ -1,0 +1,36 @@
+// async function addUserTest(howManyTimes){
+//     for(i = 0; i < howManyTimes; i++){
+//         var assert = require('chai').assert
+
+//         function getRandomInt(max){
+//             return Math.floor(Math.random() * max)
+//         }
+        
+//         var testLogin = 'testUsername' + getRandomInt(100) + '@gmail.com'
+//         console.log(testLogin)
+//         var testPassword = getRandomInt(100) + 'testPassword' + getRandomInt(100)
+//         console.log(testPassword)
+
+//         var user = new User({ login: testLogin, password: testPassword })
+
+//         var result = true
+
+//         try{
+//             await addUser(user)
+//         }
+//         catch(e){
+//             result = false
+//         }
+//         console.log(result)
+    
+//         assert.isTrue(result, 'Error, test failed')
+//     }
+// }
+
+// async function addUser(user){
+//     await user.save(function(err){
+//         if (err){
+//             console.log(`Error Saving to DB: ${err}`)
+//         }
+//     })
+// }

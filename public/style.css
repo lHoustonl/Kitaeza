@@ -61,7 +61,6 @@ body {
 .LoggedUser {
     padding-top: 15px;
     margin-left: 70px;
-    color: blue;
 }
 .section1-head #img-logo {
     position: absolute;
@@ -1048,4 +1047,21 @@ details[open] summary::after {
 }
 .back {
     margin-top: 2rem;
+}
+.help-blocks {
+    margin-bottom: 40px;
+}
+.help-info-block {
+    display: inline-block;
+    width: 33%;
+    padding: 0 6px;
+}
+.help-info-block h5 {
+    font-weight: bold;
+}
+.text-center {
+    text-align: center;
+}
+.bottom-space {
+    padding-bottom: 100px;
 }

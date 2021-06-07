@@ -3,13 +3,13 @@
         <img src="/logo2.png" alt="" class="logo">
         <h2>Зарегистриуйтесь сейчас</h2>
         <form action="/registration" method="POST">
-            <input type="email" required="required" name="login" maxlength="60" placeholder="Email"><br>
+            <input type="email" required="required" name="email" maxlength="60" placeholder="Email"><br>
             <input type="password" required="required" name="password" minlength="6"  maxlength="40" placeholder="Пароль"><br>
             <input type="text" required="required" name="fname" maxlength="30" placeholder="Имя"><br>
             <input type="text" required="required" name="lname"  maxlength="30" placeholder="Фамилия"><br>
-            <input type="checkbox" required="required" name="check">
-            <label for="check">Согласиться с условиями и политикой</label><br>
+            {{!-- <input type="checkbox" required="required" name="check">
+            <label for="check">Политика конфиденциальности и условия использования</label><br> --}}
             <button type="submit">Регистрация</button>
         </form>
-        <h6>Если вы уже зарегистрированы, <a href="#myModal" class="trigger-btn" data-toggle="modal">Авторизируйтесь тут</a></h6>
+        <h6>Если вы уже зарегистрированы, <a href="#myModal" class="trigger-btn" data-toggle="modal">войдите тут</a></h6>
   </div>
