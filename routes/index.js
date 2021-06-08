@@ -7,6 +7,7 @@ const hideHeader = 'hide'
 var isLoggedIn = false
 var email
 var token
+var userid
 
 const defaultHeaders = {
     'Content-Type': 'application/json'
@@ -32,9 +33,6 @@ async function sendRequest(method = 'GET', url = '', body = null, headers = defa
     })
     
     return await response.json()
-    // if (response.ok) { // parses JSON response into native JavaScript objects
-    // }
-    // Реализовать обработку ошибок
 }
 
 async function sendGetRequest(url = '', headers) {
@@ -43,10 +41,7 @@ async function sendGetRequest(url = '', headers) {
         headers: headers
     })
 
-    if (response.ok) {
-        return await response.json() // parses JSON response into native JavaScript objects
-    }
-    // Реализовать обработку ошибок
+    return await response.json()
 }
 
 router.get('/', async (req, res) => {
@@ -55,30 +50,9 @@ router.get('/', async (req, res) => {
         title: 'Китаёза',
         isLoggedIn,
         email,
-        products
+        products,
+        userid
     })
-
-    // sendRequest('POST', url + 'productsCharacteristics/', {
-    //     characName: 'Вязкость',
-    //     description: '10W40',
-    //     product: '60be6c379102300015af8f5c'
-    // }, authHeader(token)).then(data => {
-    //     console.log(data)
-    //     console.log(token)
-    // })
-    // sendGetRequest(url + 'products/').then(data => {
-    //     console.log(data)
-    // })
-    // sendRequest('POST', url + 'categories/', {
-    //     title: 'Автомобильные масла',
-    //     description: 'Масла для автомобилей'
-    // }, authHeader(token)).then(data => {
-    //     console.log(data)
-    //     console.log(token)
-    // })
-    // sendGetRequest(url + 'products/').then(data => {
-    //     console.log(data)
-    // })
 })
 
 router.get('/help', (req, res) => {
@@ -186,23 +160,96 @@ router.get('/favorites', (req, res) => {
 })
 
 router.get('/basket', async (req, res) => {
-    var products = await sendGetRequest(url + 'products/')
-    res.render('basket', {
-        title: 'Корзина',
-        isLoggedIn,
-        hideHeader,
-        email,
-        products
-    })
+    if (token == null) {
+        var products = await sendGetRequest(url + 'products/')
+        res.render('basket', {
+            title: 'Корзина',
+            isLoggedIn,
+            hideHeader,
+            email,
+            products
+        })
+    }
+    else {
+        try {
+            var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
+            var product = await sendGetRequest(url + 'baskets/getProductsFromInstancesOfBasket/' + basket[0]._id)
+            var products = await sendGetRequest(url + 'products/')
+            console.log(basket)
+            res.render('basket', {
+                title: 'Корзина',
+                isLoggedIn,
+                hideHeader,
+                email,
+                products,
+                product,
+                basketId: basket[0]._id
+            })
+        }
+        catch {
+            var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
+            var products = await sendGetRequest(url + 'products/')
+            console.log(basket)
+            res.render('basket', {
+                title: 'Корзина',
+                isLoggedIn,
+                hideHeader,
+                email,
+                products,
+                basketId: basket[0]._id
+            })
+        }
+    }
 })
 
-router.get('/orders', (req, res) => {
+router.get('/basket/:id', async (req, res) => {
+    try {
+        var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
+        await sendRequest('POST', url + 'productInstances/', {
+            product: req.params.id,
+            basket: basket[0]._id,
+            amount: 1
+        }, authHeader(token))
+        var product = await sendGetRequest(url + 'baskets/getProductsFromInstancesOfBasket/' + basket[0]._id)
+        var products = await sendGetRequest(url + 'products/')
+        console.log(product)
+
+        res.render('basket', {
+            title: 'Корзина',
+            isLoggedIn,
+            hideHeader,
+            email,
+            products,
+            product,
+            basketId: basket[0]._id
+        })
+    }
+    catch {
+        res.redirect('/')
+    }
+})
+
+router.get('/orders', async (req, res) => {
+    var order = await sendGetRequest(url + 'orders/ordersbyuser/' + userid,)
+    var products = await sendGetRequest(url + 'products/')
+    console.log(order)
     res.render('orders', {
         title: 'Заказы',
         isLoggedIn,
         hideHeader,
-        email
+        email,
+        order,
+        products
     })
+})
+
+router.get('/orders/:id', async (req, res) => {
+    await sendRequest('POST', url + 'baskets/basketToOrderEmailNotify', {
+        basketId: req.params.id
+    }, authHeader(token)).then(data => {
+        console.log(data)
+    })
+    res.redirect('/orders')
 })
 
 router.get('/catalog', async (req, res) => {
@@ -274,6 +321,16 @@ router.get('/product', async (req, res) => {
         product,
         characteristics,
         email
+    })
+})
+
+router.get('/registration', (req, res) => {
+    res.render('registration', {
+        title: 'Регистрация',
+        hideHeader,
+        isLoggedIn,
+        email,
+        userid
     })
 })
 
@@ -351,7 +408,6 @@ router.get('/admin-panel/edit-product', async (req, res) => {
 
 router.post('/registration', async (req, res) => {
     try {
-        var id
         await sendRequest('POST', url + 'users/', { 
             user: {
                 email: req.body.email,
@@ -360,20 +416,20 @@ router.post('/registration', async (req, res) => {
          }).then(data => {
             token = data.user.token
             email = data.user.email
-            id = data.user._id
+            userid = data.user._id
         })
-        console.log(id)
+        console.log(userid)
         await sendRequest('POST', url + 'baskets/', {
-            user: id
-        }).then(data => {
+            user: userid
+        }, authHeader(token)).then(data => {
             console.log(data)
         })
         await sendRequest('POST', url + 'userCredentials/', {
-            user: id,
+            user: userid,
             email: email,
             name: req.body.fname,
             surname: req.body.lname
-        }).then(data => {
+        }, authHeader(token)).then(data => {
             console.log(data)
             isLoggedIn = true
             res.redirect('/')
@@ -394,6 +450,7 @@ router.post('/authorization', async (req, res) => {
          }).then(data => {
             token = data.user.token
             email = data.user.email
+            userid = data.user._id
             isLoggedIn = true
             res.redirect('/')
         })

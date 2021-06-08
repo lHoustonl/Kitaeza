@@ -8,7 +8,7 @@
             {{#if_eq email 'admin'}}
             <div class="LoggedUser"><a href="/admin-panel">Перейти в панель администрирования</a></div>
             {{else}}
-            <div class="LoggedUser">Добро пожаловать, {{ email }}, <a href="/orders">перейти к заказам</a></div>
+            <div class="LoggedUser">Добро пожаловать, {{ email }}, <a href="/orders" class="">перейти к заказам</a></div>
             {{/if_eq}}
             {{/if}}
             <div class="navbar">
@@ -43,18 +43,18 @@
                 </li>
                 {{!-- <li class="nav-item" id="men">
                     <p class="nav-link"><a href="/avtosearch">Поиск по автомобилю</a></p>
-                </li>
-                <li class="nav-item">
-                    <p class="nav-link"><a href="/articulsearch">Поиск по артиклу</a></p>
                 </li> --}}
-                <li class="nav-item">
-                    <p class="nav-link">Двигатели</p>
-                </li>
                 <li class="nav-item">
                     <p class="nav-link">Ходовые</p>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link">Рулевые</p>
+                    <p class="nav-link">Трансмиссия</p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">Электрика</p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">Кузов</p>
                 </li> 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">

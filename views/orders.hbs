@@ -2,39 +2,25 @@
     <div class="order-items-block float-left">
         <h4 class="bold">Мои заказы</h4>
         <div class="order-items-list">
+            {{#each order}}
             <div class="order-items separator space-s">
                 <div class="order-info float-left">
-                    <span class="bold">Заказ № 1112541</span>
-                        <a href="/help/order-canceling" class="item-button button-without-focus">Отменить заказ</a>
-                    Дата заказа: 04.10.2020
+                    <span class="bold">Заказ {{ _id }}</span>
+                        <a href="/help/order-canceling" class="button-without-focus" style="color: black;">Отменить заказ</a>
+                    Дата заказа: {{ modified }}
                 </div>
                 <div class="order-info float-right">
-                    <span class="bold">В обработке</span>
-                    2 товара
-                    <span>Сумма: 1234 ₽</span>
+                    <span class="bold">{{ status }}</span>
                 </div>
-                <div class="order-item">
+                {{!-- <div class="order-item">
                     <img class="order-item-image" src="product-img2.png">
                     <img class="order-item-image" src="product-img2.png">
-                </div>
+                </div> --}}
                 <div class="clear"></div>
             </div>
-            <div class="order-items separator space-s">
-                <div class="order-info float-left">
-                    <span class="bold">Заказ № 1112541</span>
-                    Дата заказа: 04.10.2020
-                </div>
-                <div class="order-info float-right">
-                    <span class="bold">Доставлен</span>
-                    2 товара
-                    <span>Сумма: 1234 ₽</span>
-                </div>
-                <div class="order-item">
-                    <img class="order-item-image" src="product-img2.png">
-                    <img class="order-item-image" src="product-img2.png">
-                </div>
-                <div class="clear"></div>
-            </div>
+            {{else}}
+            Заказов нет, перейдите в <a href="/basket">корзину</a> для оформления заказа
+            {{/each}}
         </div>
         {{!-- <div>У вас пока ещё нет заказов, перейдите в <a href="/catalog">корзину</a> для оформления.</div> --}}
     </div>
@@ -42,6 +28,16 @@
 </div>
 <div class="separator space-s"></div>
 <div class="similar">
-    <h3>Возможно вас заинтересует</h3>
-    <div class="similar-items-list"></div>
+    <h3>Популярные товары</h3>
+    <div class="similar-items-list">
+        {{#each products}}
+        <div class="similar-item">
+            <img src="{{ imageurl }}" class="items-img">
+            <div class="items-name-price">
+                <p class="name">{{ title }}</p>
+                <p class="price">{{ price }} ₽</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
