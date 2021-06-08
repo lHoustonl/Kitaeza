@@ -1,6 +1,6 @@
 <div class="contents1">
     <div class="product-image-block float-left">
-        <img class="product-image" src="{{ product.source }}">
+        <img class="product-image" src="{{ product.imageurl }}">
     </div>
     <div class="product-info-block float-right">
         <div class="product-info">
@@ -9,17 +9,15 @@
                 {{ product.price }} ₽
             </div>
             <h4>{{ product.subtitle }}</h4>
-            {{#if product.availability}}
+            {{#if availability}}
             <h6 class="available">• в наличии</h6>
             {{else}}
             <h6 class="orderable">• под заказ</h6>
             {{/if}}
             <div class="list">
-                <li>{{ product.characteristics.title }}: {{ product.characteristics.description }}</li>
-                <li>{{ product.characteristics.title }}: {{ product.characteristics.description }}</li>
-                <li>{{ product.characteristics.title }}: {{ product.characteristics.description }}</li>
-                <li>{{ product.characteristics.title }}: {{ product.characteristics.description }}</li>
-                <li>{{ product.characteristics.title }}: {{ product.characteristics.description }}</li>
+                {{#each characteristics}}
+                <li>{{ characName }}: {{ description }}</li>
+                {{/each}}
             </div>
             <div class="buttons">
                 <button class="custom-button bandw button-without-focus">Добавить в корзину</button>

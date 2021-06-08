@@ -2,21 +2,23 @@
     <div class="float-left list-elements">
         <h4 class="bold">Список товаров</h4>
         <div class="element separator space-s">
+            <span>Тип</span>
             <span class="bold">Наименование</span>
-            <span>Категория</span>
-            <span>Описание</span>
-            <span>URL-Изображения</span>
             <span>Стоимость</span>
             <span>Количество</span>
+            <span>Категория</span>
+            <span>Описание</span>
+            <span>Изображение</span>
         </div>
         {{#each product}}
         <div class="element separator space-s">
-            <span class="bold">{{ title }}</span>
-            <span>{{ category }}</span>
-            <span>{{ description }}</span>
-            <span>{{ img-url }}</span>
+            <span>{{ title }}</span>
+            <span class="bold">{{ subtitle }}</span>
             <span>{{ price }} ₽</span>
             <span>{{ amount }} шт.</span>
+            <span>{{ category }}</span>
+            <span>"{{ description }}"</span>
+            <a href="{{ imageurl }}">Изображение</a>
         </div>
         {{else}}
         Товаров пока нет
@@ -24,21 +26,23 @@
     </div>
     <div class="float-right add-form-forms login">
         <form action="/add-product" method="POST" class="admin-panel-form">
-            <label for="title">Наименование</label>
-            <input type="text" name="title" id="title" placeholder="Введите наименование" required>
+            <label for="title">Тип</label>
+            <input type="text" name="title" id="title" placeholder="Введите тип" required>
+            <label for="subtitle">Наименование</label>
+            <input type="text" name="subtitle" id="subtitle" placeholder="Введите наименование" required>
             <label for="category">Категория</label>
             <select name="category" id="category" required>
                 <option selected>Выберите категорию</option>
                 {{#each category}}
-                <option value="{{id}}">{{title}}</option>
+                <option value="{{ _id }}">{{ title }}</option>
                 {{else}}
                 <option>Категории отсутствуют</option>
                 {{/each}}
             </select>
             <label for="description">Описание</label>
             <input type="text" name="description" id="description" placeholder="Введите описание" required>
-            <label for="img-url">URL-Изображения</label>
-            <input type="url" name="img-url" id="img-url" placeholder="Введите Url-изображения" pattern="http.*" size="30" required>
+            <label for="imageurl">URL-Изображения</label>
+            <input type="url" name="imageurl" id="imageurl" placeholder="Введите Url-изображения" pattern="http.*" size="30" required>
             <label for="price">Стоимость</label>
             <input type="number" name="price" id="price" placeholder="Введите стоимость" required>
             <label for="amount">Количество</label>

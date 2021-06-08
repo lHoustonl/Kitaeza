@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { each } = require('jquery')
 const router = Router()
 const fetch = require('node-fetch')
 const url = 'https://kitaeza-api.herokuapp.com/api/'
@@ -14,7 +15,7 @@ const defaultHeaders = {
 function authHeader(t) {
     return authorizedHeaders = {
         'Content-Type': 'application/json',
-        Authorization: 'Token ' + token
+        Authorization: 'Token ' + t
     }
 }
 
@@ -54,11 +55,28 @@ router.get('/', async (req, res) => {
         isLoggedIn,
         email
     })
-    sendGetRequest(url + 'products/', authHeader(token)).then(data => {
-        console.log(data)
-    })
-    // sendRequest() 
-    // Получить товары для блоков рекомендаций
+
+    // sendRequest('POST', url + 'productsCharacteristics/', {
+    //     characName: 'Вязкость',
+    //     description: '10W40',
+    //     product: '60be6c379102300015af8f5c'
+    // }, authHeader(token)).then(data => {
+    //     console.log(data)
+    //     console.log(token)
+    // })
+    // sendGetRequest(url + 'products/').then(data => {
+    //     console.log(data)
+    // })
+    // sendRequest('POST', url + 'categories/', {
+    //     title: 'Автомобильные масла',
+    //     description: 'Масла для автомобилей'
+    // }, authHeader(token)).then(data => {
+    //     console.log(data)
+    //     console.log(token)
+    // })
+    // sendGetRequest(url + 'products/').then(data => {
+    //     console.log(data)
+    // })
 })
 
 router.get('/help', (req, res) => {
@@ -70,9 +88,81 @@ router.get('/help', (req, res) => {
     })
 })
 
-router.get('/registration', (req, res) => {
-    res.render('registration', {
-        title: 'Регистрация',
+router.get('/help/terms', (req, res) => {
+    res.render('help-terms', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/shipping-cost', (req, res) => {
+    res.render('help-shipping-cost', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/shipping-types', (req, res) => {
+    res.render('help-shipping-types', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/order-making', (req, res) => {
+    res.render('help-order-making', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/payment-methods', (req, res) => {
+    res.render('help-payment-methods', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/order-canceling', (req, res) => {
+    res.render('help-order-canceling', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/address', (req, res) => {
+    res.render('help-address', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/working-time', (req, res) => {
+    res.render('help-working-time', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
+})
+
+router.get('/help/shop-info', (req, res) => {
+    res.render('help-shop-info', {
+        title: token,
         hideHeader,
         isLoggedIn,
         email
@@ -82,6 +172,15 @@ router.get('/registration', (req, res) => {
 router.get('/logout', (req, res) => {
     isLoggedIn = false
     res.redirect('/')
+})
+
+router.get('/favorites', (req, res) => {
+    res.render('favorites', {
+        title: token,
+        hideHeader,
+        isLoggedIn,
+        email
+    })
 })
 
 router.get('/basket', (req, res) => {
@@ -103,47 +202,81 @@ router.get('/orders', (req, res) => {
 })
 
 router.get('/catalog', async (req, res) => {
-    var product
-    await sendGetRequest(url + 'products/', authHeader(token)).then(data => {
-        product = data
-    })
+    var product = await sendGetRequest(url + 'products/')
     res.render('catalog', {
         title: 'Каталог',
         isLoggedIn,
         Source: '/product-img2.png',
-        email
+        email,
+        products: product
+    })
+})
+
+router.get('/catalog/:id', async (req, res) => {
+    var product = await sendGetRequest(url + 'products/productCategory/' + req.params.id)
+    res.render('catalog', {
+        title: 'Ходовые части',
+        isLoggedIn,
+        Source: '/product-img2.png',
+        email,
+        products: product
     })
 })
 
 var product = {
-    source: 'product-img2.png',
+    imageurl: 'product-img2.png',
     title: 'Моторное масло',
     subtitle: 'MOTUL 5100 4T',
     price: '1234',
     availability: true,
-    characteristics: {
-        title: 'Тип',
-        description: 'Масло'
-    },
     description: 'Handlebars-хелпер представляет собой простой идентификатор, за которым следуют ноль или более параметров (через пробел). Каждый параметр представляет собой handlebars-выражение. Параметром хелпера может также являться простая строка, число или логическое значение. Хелпер производит определенные операции с параметрами и возвращает HTML код.'
 }
 
-router.get('/product', (req, res) => {
-    sendGetRequest(url + 'products/', authHeader(token)).then(data => {
-        console.log(data)
+var characteristics = {
+    characteristics: {
+        characName: 'Тип',
+        description: 'Масло'
+    }
+}
+
+router.get('/product/:id', async (req, res) => {
+    var product
+    var availability = false
+    var characteristics
+    await sendGetRequest(url + 'products/' + req.params.id).then(data => {
+        product = data
+    })
+    if (product.product.amount > 0) {
+        availability = true
+    }
+    await sendGetRequest(url + 'productsCharacteristics/productCharacteristicsbyproduct/' + req.params.id).then(data => {
+        characteristics = data
     })
     res.render('product', {
-        title: 'Item12345',
+        title: product.product.title,
+        product: product.product,
+        characteristics: characteristics,
+        availability,
+        isLoggedIn,
+        hideHeader,
+        email
+    })
+})
+
+router.get('/product', async (req, res) => {
+    res.render('product', {
+        title: 'Товар',
         isLoggedIn,
         hideHeader,
         product,
+        characteristics,
         email
     })
 })
 
 router.get('/admin-panel', async (req, res) => {
     var product
-    await sendGetRequest(url + 'products/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'products/').then(data => {
         product = data
     })
     res.render('admin-panel', {
@@ -155,7 +288,7 @@ router.get('/admin-panel', async (req, res) => {
 
 router.get('/admin-panel/add-category', async (req, res) => {
     var category
-    await sendGetRequest(url + 'categories/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'categories/').then(data => {
         category = data
     })
     res.render('add-category', {
@@ -167,7 +300,7 @@ router.get('/admin-panel/add-category', async (req, res) => {
 
 router.get('/admin-panel/edit-category', async (req, res) => {
     var category
-    await sendGetRequest(url + 'categories/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'categories/').then(data => {
         category = data
     })
     res.render('edit-category', {
@@ -179,7 +312,7 @@ router.get('/admin-panel/edit-category', async (req, res) => {
 
 router.get('/admin-panel/add-user', async (req, res) => {
     var user
-    await sendGetRequest(url + 'users/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'users/').then(data => {
         user = data
     })
     res.render('add-user', {
@@ -191,7 +324,7 @@ router.get('/admin-panel/add-user', async (req, res) => {
 
 router.get('/admin-panel/edit-user', async (req, res) => {
     var user
-    await sendGetRequest(url + 'users/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'users/').then(data => {
         user = data
     })
     res.render('edit-user', {
@@ -203,20 +336,24 @@ router.get('/admin-panel/edit-user', async (req, res) => {
 
 router.get('/admin-panel/add-product', async (req, res) => {
     var product
-    await sendGetRequest(url + 'products/', authHeader(token)).then(data => {
+    var category
+    await sendGetRequest(url + 'products/').then(data => {
         product = data
     })
-    console.log(product)
+    await sendGetRequest(url + 'categories/').then(data => {
+        category = data
+    })
     res.render('add-product', {
         title: 'Добавить товар',
         hideHeader,
-        product: product
+        product: product,
+        category: category
     })
 })
 
 router.get('/admin-panel/edit-product', async (req, res) => {
     var product
-    await sendGetRequest(url + 'products/', authHeader(token)).then(data => {
+    await sendGetRequest(url + 'products/').then(data => {
         product = data
     })
     console.log(product)
@@ -243,7 +380,7 @@ router.post('/registration', async (req, res) => {
         console.log(id)
         await sendRequest('POST', url + 'baskets/', {
             user: id
-        }, authHeader(token)).then(data => {
+        }).then(data => {
             console.log(data)
         })
         await sendRequest('POST', url + 'userCredentials/', {
@@ -251,7 +388,7 @@ router.post('/registration', async (req, res) => {
             email: email,
             name: req.body.fname,
             surname: req.body.lname
-        }, authHeader(token)).then(data => {
+        }).then(data => {
             console.log(data)
             isLoggedIn = true
             res.redirect('/')
@@ -264,7 +401,7 @@ router.post('/registration', async (req, res) => {
 
 router.post('/authorization', async (req, res) => {
     try {
-        await sendRequest('POST', 'https://kitaeza-api.herokuapp.com/api/users/login', { 
+        await sendRequest('POST', url + 'users/login', { 
             user: {
                 email: req.body.email,
                 password: req.body.password
@@ -279,6 +416,31 @@ router.post('/authorization', async (req, res) => {
     catch {
         res.redirect('/registration')
     }
+})
+
+router.post('/add-product', async (req, res) => {
+    sendRequest('POST', url + 'products/', {
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        category: req.body.category,
+        description: req.body.description,
+        price: req.body.price,
+        amount: req.body.amount,
+        imageurl: req.body.imageurl
+    }, authHeader(token)).then(data => {
+        console.log(data)
+    })
+    res.redirect('/admin-panel/add-product')
+})
+
+router.post('/add-category', async (req, res) => {
+    sendRequest('POST', url + 'categories/', {
+        title: req.body.title,
+        description: req.body.description
+    }, authHeader(token)).then(data => {
+        console.log(data)
+    })
+    res.redirect('/admin-panel/add-category')
 })
 
 module.exports = router
