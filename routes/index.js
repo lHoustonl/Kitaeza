@@ -50,10 +50,12 @@ async function sendGetRequest(url = '', headers) {
 }
 
 router.get('/', async (req, res) => {
+    var products = await sendGetRequest(url + 'products/')
     res.render('index', {
         title: 'Китаёза',
         isLoggedIn,
-        email
+        email,
+        products
     })
 
     // sendRequest('POST', url + 'productsCharacteristics/', {
@@ -183,12 +185,14 @@ router.get('/favorites', (req, res) => {
     })
 })
 
-router.get('/basket', (req, res) => {
+router.get('/basket', async (req, res) => {
+    var products = await sendGetRequest(url + 'products/')
     res.render('basket', {
         title: 'Корзина',
         isLoggedIn,
         hideHeader,
-        email
+        email,
+        products
     })
 })
 
@@ -240,12 +244,10 @@ var characteristics = {
 }
 
 router.get('/product/:id', async (req, res) => {
-    var product
+    var product = await sendGetRequest(url + 'products/' + req.params.id)
+    var products = await sendGetRequest(url + 'products/')
     var availability = false
     var characteristics
-    await sendGetRequest(url + 'products/' + req.params.id).then(data => {
-        product = data
-    })
     if (product.product.amount > 0) {
         availability = true
     }
@@ -256,6 +258,7 @@ router.get('/product/:id', async (req, res) => {
         title: product.product.title,
         product: product.product,
         characteristics: characteristics,
+        products,
         availability,
         isLoggedIn,
         hideHeader,

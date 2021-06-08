@@ -63,5 +63,15 @@
 </div>
 <div class="similar">
     <h3>Похожие товары</h3>
-    <div class="similar-items-list"></div>
+    <div class="similar-items-list">
+        {{#each products}}
+        <div class="similar-item">
+            <img src="{{ imageurl }}" class="items-img">
+            <div class="items-name-price">
+                <p class="name">{{ title }}</p>
+                <p class="price">{{ price }} ₽</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

@@ -428,6 +428,7 @@ body {
 }
 .item-name-price {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 5px;
 }

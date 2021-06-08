@@ -80,6 +80,16 @@
 </div>
 <div class="separator space-s"></div>
 <div class="similar">
-    <h3>Возможно вас заинтересует</h3>
-    <div class="similar-items-list"></div>
+    <h3>Популярные товары</h3>
+    <div class="similar-items-list">
+        {{#each products}}
+        <div class="similar-item">
+            <img src="{{ imageurl }}" class="items-img">
+            <div class="items-name-price">
+                <p class="name">{{ title }}</p>
+                <p class="price">{{ price }} ₽</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

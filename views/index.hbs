@@ -66,11 +66,17 @@
         </div>
     </div>
 </div>
-<div class="trending">
+<div class="similar">
     <h3>Популярные товары</h3>
-    <div class="trending-items-list"></div>
-</div>
-<div class="gear">
-    <h3>Может вам пригодится</h3>
-    <div class="gear-items-list"></div>
+    <div class="similar-items-list">
+        {{#each products}}
+        <div class="similar-item">
+            <img src="{{ imageurl }}" class="items-img">
+            <div class="items-name-price">
+                <p class="name">{{ title }}</p>
+                <p class="price">{{ price }} ₽</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
