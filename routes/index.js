@@ -275,92 +275,74 @@ router.get('/product', async (req, res) => {
 })
 
 router.get('/admin-panel', async (req, res) => {
-    var product
-    await sendGetRequest(url + 'products/').then(data => {
-        product = data
-    })
+    var product = await sendGetRequest(url + 'products/')
     res.render('admin-panel', {
         title: 'Панель администрирования',
         hideHeader,
-        product: product
+        product: product,
+        email
     })
 })
 
 router.get('/admin-panel/add-category', async (req, res) => {
-    var category
-    await sendGetRequest(url + 'categories/').then(data => {
-        category = data
-    })
+    var category = await sendGetRequest(url + 'categories/')
     res.render('add-category', {
         title: 'Добавить категорию',
         hideHeader,
-        category: category
+        category: category,
+        email
     })
 })
 
 router.get('/admin-panel/edit-category', async (req, res) => {
-    var category
-    await sendGetRequest(url + 'categories/').then(data => {
-        category = data
-    })
+    var category = await sendGetRequest(url + 'categories/')
     res.render('edit-category', {
         title: 'Изменить категорию',
         hideHeader,
-        category
+        category,
+        email
     })
 })
 
 router.get('/admin-panel/add-user', async (req, res) => {
-    var user
-    await sendGetRequest(url + 'users/').then(data => {
-        user = data
-    })
+    var user = await sendGetRequest(url + 'users/')
     res.render('add-user', {
         title: 'Добавить пользователя',
         hideHeader,
-        user: user
+        user: user,
+        email
     })
 })
 
 router.get('/admin-panel/edit-user', async (req, res) => {
-    var user
-    await sendGetRequest(url + 'users/').then(data => {
-        user = data
-    })
+    var user = await sendGetRequest(url + 'users/')
     res.render('edit-user', {
         title: 'Изменить пользователя',
         hideHeader,
-        user: user
+        user: user,
+        email
     })
 })
 
 router.get('/admin-panel/add-product', async (req, res) => {
-    var product
-    var category
-    await sendGetRequest(url + 'products/').then(data => {
-        product = data
-    })
-    await sendGetRequest(url + 'categories/').then(data => {
-        category = data
-    })
+    var product = await sendGetRequest(url + 'products/')
+    var category = await sendGetRequest(url + 'categories/')
     res.render('add-product', {
         title: 'Добавить товар',
         hideHeader,
         product: product,
-        category: category
+        category: category,
+        email
     })
 })
 
 router.get('/admin-panel/edit-product', async (req, res) => {
-    var product
-    await sendGetRequest(url + 'products/').then(data => {
-        product = data
-    })
-    console.log(product)
+    var product = await sendGetRequest(url + 'products/')
     res.render('edit-product', {
         title: 'Изменить товар',
         hideHeader,
-        product: product
+        product: product,
+        email
     })
 })
 
@@ -429,8 +411,8 @@ router.post('/add-product', async (req, res) => {
         imageurl: req.body.imageurl
     }, authHeader(token)).then(data => {
         console.log(data)
+        res.redirect('/admin-panel/add-product')
     })
-    res.redirect('/admin-panel/add-product')
 })
 
 router.post('/add-category', async (req, res) => {
@@ -439,8 +421,8 @@ router.post('/add-category', async (req, res) => {
         description: req.body.description
     }, authHeader(token)).then(data => {
         console.log(data)
+        res.redirect('/admin-panel/add-category')
     })
-    res.redirect('/admin-panel/add-category')
 })
 
 module.exports = router
