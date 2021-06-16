@@ -232,7 +232,6 @@ router.get('/basket/:id', async (req, res) => {
 router.get('/orders', async (req, res) => {
     var order = await sendGetRequest(url + 'orders/ordersbyuser/' + userid,)
     var products = await sendGetRequest(url + 'products/')
-    console.log(order)
     res.render('orders', {
         title: 'Заказы',
         isLoggedIn,
@@ -408,11 +407,10 @@ router.get('/admin-panel/edit-product', async (req, res) => {
 
 router.post('/registration', async (req, res) => {
     try {
-        await sendRequest('POST', url + 'users/', { 
-            user: {
-                email: req.body.email,
-                password: req.body.password
-            }
+        await sendRequest('POST', url + 'users/', {
+            email: req.body.email,
+            password: req.body.password
+            
          }).then(data => {
             token = data.user.token
             email = data.user.email
@@ -442,11 +440,9 @@ router.post('/registration', async (req, res) => {
 
 router.post('/authorization', async (req, res) => {
     try {
-        await sendRequest('POST', url + 'users/login', { 
-            user: {
-                email: req.body.email,
-                password: req.body.password
-            }
+        await sendRequest('POST', url + 'users/login', {
+            email: req.body.email,
+            password: req.body.password
          }).then(data => {
             token = data.user.token
             email = data.user.email
