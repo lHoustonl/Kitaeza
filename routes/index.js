@@ -408,10 +408,8 @@ router.get('/admin-panel/edit-product', async (req, res) => {
 router.post('/registration', async (req, res) => {
     try {
         await sendRequest('POST', url + 'users/', { 
-            user: {
                 email: req.body.email,
                 password: req.body.password
-            }
          }).then(data => {
             token = data.user.token
             email = data.user.email
@@ -441,11 +439,9 @@ router.post('/registration', async (req, res) => {
 
 router.post('/authorization', async (req, res) => {
     try {
-        await sendRequest('POST', url + 'users/login', { 
-            user: {
+        await sendRequest('POST', url + 'users/login', {
                 email: req.body.email,
                 password: req.body.password
-            }
          }).then(data => {
             token = data.user.token
             email = data.user.email
