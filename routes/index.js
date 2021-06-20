@@ -57,7 +57,7 @@ router.get('/', async (req, res) => {
 
 router.get('/help', (req, res) => {
     res.render('help', {
-        title: token,
+        title: 'Помощь',
         hideHeader,
         isLoggedIn,
         email
