@@ -171,39 +171,49 @@ router.get('/basket', async (req, res) => {
         })
     }
     else {
-        try {
-            var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
-            var product = await sendGetRequest(url + 'baskets/getProductsFromInstancesOfBasket/' + basket[0]._id)
+        var p = []
+        var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
+        var product = await sendGetRequest(url + 'baskets/getProductsFromInstancesOfBasket/' + basket[0]._id).then(async data => {
+            console.log(data)
+            for (var i = 0; i < data.length; i++) {
+                p.push(data[i].instanceDetails[0])
+            }
             var products = await sendGetRequest(url + 'products/')
             console.log(basket)
+            console.log(p)
             res.render('basket', {
                 title: 'Корзина',
                 isLoggedIn,
                 hideHeader,
                 email,
                 products,
-                product,
+                product: p,
                 basketId: basket[0]._id
             })
-        }
-        catch {
-            var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
-            var products = await sendGetRequest(url + 'products/')
-            console.log(basket)
-            res.render('basket', {
-                title: 'Корзина',
-                isLoggedIn,
-                hideHeader,
-                email,
-                products,
-                basketId: basket[0]._id
-            })
-        }
+        })
+
+        // try {
+
+        // }
+        // catch {
+        //     var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
+        //     var products = await sendGetRequest(url + 'products/')
+        //     console.log(basket)
+        //     res.render('basket', {
+        //         title: 'Корзина',
+        //         isLoggedIn,
+        //         hideHeader,
+        //         email,
+        //         products,
+        //         basketId: basket[0]._id
+        //     })
+        // }
     }
 })
 
 router.get('/basket/:id', async (req, res) => {
     try {
+        var p = []
         var basket = await sendGetRequest(url + 'baskets/basketsbyuser/' + userid)
         await sendRequest('POST', url + 'productInstances/', {
             product: req.params.id,
@@ -211,6 +221,9 @@ router.get('/basket/:id', async (req, res) => {
             amount: 1
         }, authHeader(token))
         var product = await sendGetRequest(url + 'baskets/getProductsFromInstancesOfBasket/' + basket[0]._id)
+        for (var i = 0; i < data.length; i++) {
+            p.push(data[i].instanceDetails[0])
+        }
         var products = await sendGetRequest(url + 'products/')
         console.log(product)
 
@@ -220,12 +233,12 @@ router.get('/basket/:id', async (req, res) => {
             hideHeader,
             email,
             products,
-            product,
+            product: p,
             basketId: basket[0]._id
         })
     }
     catch {
-        res.redirect('/')
+        res.redirect('/basket')
     }
 })
 
@@ -408,29 +421,16 @@ router.get('/admin-panel/edit-product', async (req, res) => {
 router.post('/registration', async (req, res) => {
     try {
         await sendRequest('POST', url + 'users/', { 
-                email: req.body.email,
-                password: req.body.password
-         }).then(data => {
+            email: req.body.email,
+            password: req.body.password
+        }).then(data => {
             token = data.user.token
             email = data.user.email
             userid = data.user._id
-        })
-        console.log(userid)
-        await sendRequest('POST', url + 'baskets/', {
-            user: userid
-        }, authHeader(token)).then(data => {
-            console.log(data)
-        })
-        await sendRequest('POST', url + 'userCredentials/', {
-            user: userid,
-            email: email,
-            name: req.body.fname,
-            surname: req.body.lname
-        }, authHeader(token)).then(data => {
-            console.log(data)
             isLoggedIn = true
             res.redirect('/')
         })
+        console.log(userid)
     }
     catch {
         res.redirect('/registration')
